@@ -11,10 +11,10 @@
 
 
 <html>
-<head>
-  <title>Luvr</title>
-</head>
-<body>
-<jsp:include page="/Chunks/Nav.jsp"></jsp:include>
-</body>
+  <head>
+    <title>Luvr</title>
+  </head>
+  <body>
+  <jsp:include page="/Chunks/Nav.jsp"></jsp:include>
+  </body>
 </html>
