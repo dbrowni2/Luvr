@@ -35,8 +35,8 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false"> Me <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Login</a></li>
-                        <li><a href="#">Register</a></li>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/signup">Register</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#">Privacy Policy</a></li>
                     </ul>
