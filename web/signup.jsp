@@ -16,5 +16,21 @@
 </head>
 <body>
 <jsp:include page="/Chunks/Nav.jsp"></jsp:include>
+
+<div id="signup">
+    <form method="get">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br>
+        <label for="confirme">Confirm Email:</label>
+        <input type="email" id="confirme" name="confirme"><br>
+        <label for="pass">Password:</label>
+        <input type="password" id="pass" name="pass"><br>
+        <label for="cpass">Confirm Password:</label>
+        <input type="password" id="cpass" name="cpass"><br>
+        <input type="submit"><br>
+
+    </form>
+
+</div>
 </body>
 </html>
