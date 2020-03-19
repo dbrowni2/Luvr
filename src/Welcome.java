@@ -10,7 +10,7 @@ import java.io.IOException;
 @WebServlet(name = "Welcome")
 public class Welcome extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-String url = "/index.jsp";
+ String url = "/index.jsp";
       HttpSession session = request.getSession();
       if (request.getServletPath().equals("/test")) {
           url = "/test.jsp";
