@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="/Chunks/links.jsp"></jsp:include>
 <%@ page
         import="java.io.*,java.util.*,java.sql.Connection, java.sql.DriverManager, java.sql.SQLException,javax.sql.*" %>
 <%@ page import="javax.servlet.http.*,javax.servlet.*" %>
@@ -16,6 +15,7 @@
     <title>Dates</title>
 </head>
 <body>
+<jsp:include page="/Chunks/Nav.jsp"></jsp:include>
 <%
     //jdbc:mysql://{host::localhost}?[:{port::3306}][/{database}?][\?<&,user={user},password={password},{:identifier}={:identifier}>]
     String driver = "com.mysql.cj.jdbc.Driver";
