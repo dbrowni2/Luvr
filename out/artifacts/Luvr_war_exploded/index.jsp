@@ -16,5 +16,6 @@
 </head>
 <body>
 <jsp:include page="/Chunks/Nav.jsp"></jsp:include>
+
 </body>
 </html>
