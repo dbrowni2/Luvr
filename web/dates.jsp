@@ -34,7 +34,7 @@
     try {
         Connection cnx = DriverManager.getConnection(url, dUser, dPass);
 %>
-<h1>Works</h1>
+<jsp:include page="/Chunks/dates_main.jsp"></jsp:include>
 <%
     } catch (SQLException e) {
         e.printStackTrace();
