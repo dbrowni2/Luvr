@@ -43,7 +43,7 @@
 
 
                 <li><a href="#">Click Here if You Hate Cybersecurity</a></li>
-                <li><a href="#">Dates</a></li>
+                <li><a href="/dates.jsp">Dates</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false"> Me <span class="caret"></span></a>

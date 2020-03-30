@@ -10,8 +10,21 @@
       <root url="jar://$PROJECT_DIR$/lib/javax.servlet.jsp.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/javax.servlet.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/javax.servlet.jsp.jstl.jar!/" />
+      <root url="file://$USER_HOME$/Downloads/mysql-connector-java-8.0.19/mysql-connector-java-8.0.19" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="file://$USER_HOME$/Downloads/mysql-connector-java-8.0.19/mysql-connector-java-8.0.19/src/build/java" />
+      <root url="file://$USER_HOME$/Downloads/mysql-connector-java-8.0.19/mysql-connector-java-8.0.19/src/demo/java" />
+      <root url="file://$USER_HOME$/Downloads/mysql-connector-java-8.0.19/mysql-connector-java-8.0.19/src/generated/java" />
+      <root url="file://$USER_HOME$/Downloads/mysql-connector-java-8.0.19/mysql-connector-java-8.0.19/src/legacy/java" />
+      <root url="file://$USER_HOME$/Downloads/mysql-connector-java-8.0.19/mysql-connector-java-8.0.19/src/main/core-api/java" />
+      <root url="file://$USER_HOME$/Downloads/mysql-connector-java-8.0.19/mysql-connector-java-8.0.19/src/main/core-impl/java" />
+      <root url="file://$USER_HOME$/Downloads/mysql-connector-java-8.0.19/mysql-connector-java-8.0.19/src/main/protocol-impl/java" />
+      <root url="file://$USER_HOME$/Downloads/mysql-connector-java-8.0.19/mysql-connector-java-8.0.19/src/main/user-api/java" />
+      <root url="file://$USER_HOME$/Downloads/mysql-connector-java-8.0.19/mysql-connector-java-8.0.19/src/main/user-impl/java" />
+      <root url="file://$USER_HOME$/Downloads/mysql-connector-java-8.0.19/mysql-connector-java-8.0.19/src/test/java" />
+    </SOURCES>
+    <jarDirectory url="file://$USER_HOME$/Downloads/mysql-connector-java-8.0.19/mysql-connector-java-8.0.19" recursive="false" />
   </library>
 </component>
