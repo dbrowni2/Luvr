@@ -1,5 +1,7 @@
-<jsp:include page="/Chunks/links.jsp"></jsp:include>
 
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
+<jsp:include page="/Chunks/links.jsp"></jsp:include>
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -19,7 +21,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#"> Home <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="home"> Home <span class="sr-only">(current)</span></a></li>
                 <li><a href="#">Link</a></li>
             </ul>
             <form class="navbar-form navbar-left">
@@ -29,14 +31,25 @@
                 <button type="submit" class="btn btn-default">Find Date</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
+
+                <li><c:choose>
+                    <c:when test="${user == null}">
+                    <p>Not signed in</p>
+                </c:when>
+                    <c:otherwise>
+                    <p>Signed in as <c:out value="${user.uName}"/></p>
+                </c:otherwise>
+                </c:choose></li>
+
+
                 <li><a href="#">Click Here if You Hate Cybersecurity</a></li>
                 <li><a href="#">Dates</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false"> Me <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/login">Login</a></li>
-                        <li><a href="/signup">Register</a></li>
+                        <li><a href="login">Login</a></li>
+                        <li><a href="register">Register</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#">Privacy Policy</a></li>
                     </ul>
