@@ -13,12 +13,19 @@
         <servlet-name>Register</servlet-name>
         <servlet-class>Register</servlet-class>
     </servlet>
-
+    <servlet>
+        <servlet-name>Dates</servlet-name>
+        <servlet-class>Dates</servlet-class>
+    </servlet>
+<servlet-mapping>
+    <servlet-name>Dates</servlet-name>
+    <url-pattern>/dates</url-pattern>
+</servlet-mapping>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/login</url-pattern>
         <url-pattern>/home</url-pattern>
-        <url-pattern></url-pattern>
+        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
 <servlet-mapping>
     <servlet-name>Register</servlet-name>
