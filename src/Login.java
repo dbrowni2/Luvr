@@ -14,15 +14,15 @@ import org.owasp.esapi.ESAPI;
 import org.owasp.esapi.Validator;
 @WebServlet(name = "Login",
         description ="login controller",
-        urlPatterns = {"/Login"}
+        urlPatterns = {"/login"}
 )
 public class Login extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
-
+        String encode = null;
         // Get the session
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(true);
 
 
         // Set default url and initialize redirect (as opposed to forward) to false
@@ -49,7 +49,8 @@ public class Login extends HttpServlet {
                     for(User user: UserDB.getUsers()){
                         if(user.getuEmail().equals(request.getParameter("email")) && user.getuPass().equals(request.getParameter("pass"))){
                             session.setAttribute("user", user);
-                            url ="/home";
+                            encode = response.encodeURL(request.getContextPath());
+                            response.sendRedirect(encode + "/Home?action=home");
                             redirect = true;
 
                         }
@@ -77,12 +78,13 @@ public class Login extends HttpServlet {
 
 
         // Forward the request
-        if (redirect) {
+   /**     if (redirect) {
             response.sendRedirect(request.getContextPath() + url);
         }
         else{
             getServletContext().getRequestDispatcher(url).forward(request, response);
         }
+    **/
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

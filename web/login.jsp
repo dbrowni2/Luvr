@@ -20,7 +20,7 @@
 <jsp:include page="/Chunks/Nav.jsp"></jsp:include>
 
 <div id="signin" class="col-sm-4" style="padding-top: 5pt; padding-left: 20pt">
-    <form method="POST" action="login">
+    <form method="POST" action="<%= request.getContextPath()%>/login">
         <div class="form-group">
             <label for="Lemail">Email:</label><br>
             <input type="email" name="email" id="Lemail" class="form-control"><br>
