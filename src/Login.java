@@ -36,7 +36,7 @@ public class Login extends HttpServlet {
                 //  If the user is signing in from a specific item page, redirect there
 
 
-// If the user is signing in from the swaps page, redirect there
+
 
 
                 // Redirect so the url does not show "/login"

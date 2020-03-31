@@ -28,6 +28,9 @@ public class Home extends HttpServlet {
             case "home":
                 request.getRequestDispatcher("index.jsp").forward(request, response);
                 break;
+            case "dates":
+                request.getRequestDispatcher("dates.jsp").forward(request, response);
+                break;
             default:
                 break;
         }

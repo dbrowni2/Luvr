@@ -104,6 +104,14 @@ users.add(user);
             e.printStackTrace();
         }
     }
+    public static User getUserByID(String id){
+        for(User use: users){
+            if(use.getID().equalsIgnoreCase(id)){
+                return use;
+            }
+        }
+        return null;
+    }
 /**
     // This is in place of a getUserById() method
     public static User getUserByFirstName(String name) throws SQLException {
@@ -145,14 +153,7 @@ users.add(user);
     public static void addUser(User user){
         users.add(user);
     }
-    public static User getUserByID(String id){
-        for(User use: users){
-            if(use.getId().equalsIgnoreCase(id)){
-                return use;
-            }
-        }
-        return null;
-    }
+
     public static void addLogin(String id, String name, String pass){
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();

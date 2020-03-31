@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Trini
@@ -35,6 +36,7 @@
         Connection cnx = DriverManager.getConnection(url, dUser, dPass);
 %>
 <jsp:include page="/Chunks/dates_main.jsp"></jsp:include>
+
 <%
     } catch (SQLException e) {
         e.printStackTrace();

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/Chunks/links.jsp"></jsp:include>
 <%@ page import="javax.servlet.http.*,javax.servlet.*, java.io.*, java.net.*, org.json.*" %>
 <%@ page import="com.mysql.cj.xdevapi.JsonParser" %>
@@ -10,7 +11,9 @@
             <label for="zip">Enter your ZIP code (ex: 28223):</label>
             <input type="text" class="form-control" id="zip">
         </div>
+
     </div>
+    <p><c:out value="${loc}"/></p>
     <div class="col-sm-8">
         <label>Select the range you'd like to search in: </label>
         <br>
