@@ -19,13 +19,16 @@
 <body>
 <jsp:include page="/Chunks/Nav.jsp"></jsp:include>
 
-<div id="signin">
+<div id="signin" class="col-sm-4" style="padding-top: 5pt; padding-left: 20pt">
     <form method="POST" action="login">
-        <label for="Lemail">Email:</label><br>
-        <input type="email" name="email" id="Lemail"><br>
-        <label for="Lpass">Password:</label><br>
-        <input type="password" name="pass" id="Lpass"><br>
-        <input type="submit" value="login"><br>
+        <div class="form-group">
+            <label for="Lemail">Email:</label><br>
+            <input type="email" name="email" id="Lemail" class="form-control"><br>
+
+            <label for="Lpass">Password:</label><br>
+            <input type="password" name="pass" id="Lpass" class="form-control"><br>
+            <input type="submit" value="login" class="btn btn-default"><br>
+        </div>
     </form>
 
 </div>

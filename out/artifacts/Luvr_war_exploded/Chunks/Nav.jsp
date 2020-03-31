@@ -21,7 +21,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="home"> Home <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="<%= request.getContextPath() %>/Home?action=home"> Home <span class="sr-only">(current)</span></a></li>
                 <li><a href="#">Link</a></li>
             </ul>
             <form class="navbar-form navbar-left">
@@ -43,14 +43,13 @@
 
 
                 <li><a href="#">Click Here if You Hate Cybersecurity</a></li>
-                <li><a href="dates">Dates</a></li>
+                <li><a href="/dates.jsp">Dates</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false"> Me <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="login">Login</a></li>
-                        <li><a href="register">Register</a></li>
-                        <li><a href="logout">Log Out</a></li>
+                        <li><a href="<%= request.getContextPath() %>/Home?action=login">Login</a></li>
+                        <li><a href="<%= request.getContextPath() %>/Home?action=register">Register</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#">Privacy Policy</a></li>
                     </ul>

@@ -11,31 +11,24 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-@WebServlet(name = "Register")
+@WebServlet(name = "Register",
+        description = "registration controller",
+        urlPatterns = {"/Register"}
+)
 public class Register extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        // AUTHENTICATION HANDLED IN FILTER
+        String encode = null;
         HttpSession session = request.getSession(true);
-        boolean redirect = false;
         UserDB udb = new UserDB();
         ArrayList<User> users = udb.getUsers();
-        String url="/home";
-        if(request.getServletPath().equals("/register")){
-            if(request.getParameter("name") == null){
-                url="/register.jsp";
-
-            } else{
-
-              User user = new User(request.getParameter("name"), request.getParameter("email"),request.getParameter("pass"));
-                udb.addUser(user);
-                session.setAttribute("user", user);
-                redirect = true;
-                url = "/home";
-            }
-        }
-        if (redirect) response.sendRedirect(request.getContextPath() + url);
-        else getServletContext().getRequestDispatcher(url).forward(request, response);
+        User user = new User(request.getParameter("name"), request.getParameter("email"),request.getParameter("pass"));
+        udb.addUser(user);
+        session.setAttribute("user", user);
+        encode = response.encodeURL(request.getContextPath());
+        response.sendRedirect(encode + "/Home?action=home");
     }
 
 

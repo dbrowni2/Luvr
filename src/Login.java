@@ -12,7 +12,10 @@ import beans.User;
 import database.UserDB;
 import org.owasp.esapi.ESAPI;
 import org.owasp.esapi.Validator;
-@WebServlet(name = "Login")
+@WebServlet(name = "Login",
+        description ="login controller",
+        urlPatterns = {"/Login"}
+)
 public class Login extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

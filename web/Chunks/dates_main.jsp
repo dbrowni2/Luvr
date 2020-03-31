@@ -1,5 +1,6 @@
 <jsp:include page="/Chunks/links.jsp"></jsp:include>
-<%@ page import="javax.servlet.http.*,javax.servlet.*, java.io.*, java.net.*" %>
+<%@ page import="javax.servlet.http.*,javax.servlet.*, java.io.*, java.net.*, org.json.*" %>
+<%@ page import="com.mysql.cj.xdevapi.JsonParser" %>
 
 
 <div class="dateFinder" style="padding-left: 30pt; padding-right: 30pt">
@@ -31,13 +32,6 @@
     conn.setDoOutput(true);
     conn.setRequestMethod("GET");
     conn.setRequestProperty("Authorization", "Bearer MSTNVPev1fJLQUOBG-Ck-sBgnRomemMu6urbfvbzNF_S_RdD1CIs4W0sruIstSMNw3A1d749wVs4QFoSibdJwXC6mjwIZ2MhZVshXKtIJejLRIVm3XKXTzcfzCdYXnYx");
-
-    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-    String inputLine;
-    while ((inputLine = in.readLine()) != null)
-        System.out.println(inputLine);
-    in.close();
 
 
 %>
