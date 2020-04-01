@@ -6,59 +6,72 @@
 
 <div class="dateFinder" style="padding-left: 30pt; padding-right: 30pt">
     <form Method="post" action="<%= request.getContextPath()%>/dates">
-    <h1>Find dates near you!</h1>
-    <div class="col-sm-4">
-        <div class="form-group">
-            <label for="zip">Enter your ZIP code (ex: 28223):</label>
-            <input type="zip" class="form-control" id="zip" name="zip" required="true">
+        <h1>Find dates near you!</h1>
+        <div class="col-sm-4">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="zip">Enter your ZIP code (ex: 28223):</label>
+                    <input type="zip" class="form-control" id="zip" name="zip" required="true">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <br>
+                <input type="submit" value="Find Dates" class="btn btn-default">
+            </div>
         </div>
-    </div>
-        <input type="submit" value="findDates" class="btn btn-default"><br>
-</form>
-
-    <div class="col-sm-8">
+    </form>
+    <div class="col-sm-4">
         <label>Select the range you'd like to search in: </label>
         <br>
         <label class="radio-inline"><input type="radio" name="optradio" checked>5 miles</label>
         <label class="radio-inline"><input type="radio" name="optradio">10 miles</label>
         <label class="radio-inline"><input type="radio" name="optradio">25 miles</label>
     </div>
+    <div class="col-sm-4">
+
+    </div>
     <br>
-    <div>
-
-        <c:choose>
+</div>
+<div style="padding: 20pt; align-content: center">
+    <div class="col-12 col-sm-12 col-lg-12">
+        <div class="table table-responsive">
+            <c:choose>
             <c:when test="${dates != null}">
-                <table border="2" cellpadding="10">
+                <table class="table table-striped table-hover">
                     <caption><h2>Dates in: <c:out value="${param.get('zip')}"/></h2></caption>
+                    <thead class="">
                     <tr>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Rating</th>
-                        <th>Phone</th>
-                        <th>Price</th>
-                        <th>Location</th>
-                        <th>Link</th>
-
+                        <th scope="col">Image</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Rating</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Link</th>
                     </tr>
-                    <c:forEach var = "i" begin = "0" end = "${dates.size() - 1}">
+                    </thead>
+                    <tbody>
+                    <c:forEach var="i" begin="0" end="${dates.size() - 1}">
 
-                    <tr>
-                        <td><img source="${dates.get(i).getImg_url()}"></td>
-                        <td><c:out value="${dates.get(i).getName()}"/> </td>
-                        <td><c:out value="${dates.get(i).getRating()}"/> </td>
-                        <td><c:out value="${dates.get(i).getPhone()}"/> </td>
-                        <td><c:out value="${dates.get(i).getPrice()}"/> </td>
-                        <td><c:out value="${dates.get(i).getLocation()}"/> </td>
-                        <td><a href="${dates.get(i).getUrl()}">Yelp</a> </td>
-                    </tr>
+                        <tr>
+                            <td><img source="${dates.get(i).getImg_url()}"></td>
+                            <td><c:out value="${dates.get(i).getName()}"/></td>
+                            <td><c:out value="${dates.get(i).getRating()}"/></td>
+                            <td><c:out value="${dates.get(i).getPhone()}"/></td>
+                            <td><c:out value="${dates.get(i).getPrice()}"/></td>
+                            <td><c:out value="${dates.get(i).getLocation()}"/></td>
+                            <td><a href="${dates.get(i).getUrl()}" class="img-responsive">Yelp</a></td>
+                        </tr>
 
-               </c:forEach></p>
+                    </c:forEach>
+                    </tbody>
                 </table>
             </c:when>
             <c:otherwise>
             <p>Search for a location!</p>
             </c:otherwise>
         </c:choose>
+        </div>
     </div>
 </div>
 
