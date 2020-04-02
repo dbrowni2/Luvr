@@ -42,27 +42,27 @@
                     <caption><h2>Dates in: <c:out value="${param.get('zip')}"/></h2></caption>
                     <thead class="">
                     <tr>
-                        <th scope="col">Image</th>
                         <th scope="col">Name</th>
                         <th scope="col">Rating</th>
                         <th scope="col">Phone</th>
                         <th scope="col">Price</th>
                         <th scope="col">Location</th>
-                        <th scope="col">Link</th>
+                        <th scope="col">Directions</th>
+                        <th scope="col">Yelp Page</th>
                     </tr>
                     </thead>
                     <tbody>
                     <c:forEach var="i" begin="0" end="${dates.size() - 1}">
 
                         <tr>
-                            <td><img source="${dates.get(i).getImg_url()}" style="width: 50%" class="img-responsive"/>
-                            </td>
                             <td><c:out value="${dates.get(i).getName()}"/></td>
                             <td><c:out value="${dates.get(i).getRating()}"/></td>
-                            <td><c:out value="${dates.get(i).getPhone()}"/></td>
+                            <td><a href="tel:${dates.get(i).getPhone()}">${dates.get(i).getPhone()}</a></td>
                             <td><c:out value="${dates.get(i).getPrice()}"/></td>
                             <td><c:out value="${dates.get(i).getLocation()}"/></td>
-                            <td><a href="${dates.get(i).getUrl()}" class="img-responsive">Yelp</a></td>
+                            <td><a href="https://maps.google.com?saddr=Current+Location&daddr=${dates.get(i).location}"
+                                   target="_blank">Get Directions</a></td>
+                            <td><a href="${dates.get(i).getUrl()}">Yelp</a></td>
                         </tr>
 
                     </c:forEach>
