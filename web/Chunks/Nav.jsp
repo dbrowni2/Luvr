@@ -14,14 +14,16 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">
-                <img src="/../images/LuvrLogo_dhrough.png" alt="luvrlogo" id="logo" width="30" height="30">
+                <img src="${pageContext.request.contextPath}/../images/LuvrLogo_dhrough.png" alt="luvrlogo" id="logo"
+                     width="30" height="30">
             </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="<%= request.getContextPath() %>/Home?action=home"> Home <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="<%= request.getContextPath() %>/Home?action=home"> Home <span
+                        class="sr-only">(current)</span></a></li>
                 <li><a href="#">Link</a></li>
             </ul>
             <form class="navbar-form navbar-left">
