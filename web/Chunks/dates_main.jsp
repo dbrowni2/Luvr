@@ -68,12 +68,22 @@
                     </c:forEach>
                     </tbody>
                 </table>
-            </c:when>
+        </div>
+
+        </c:when>
             <c:otherwise>
-                <p align="center">Search for a location!</p>
+                <div style="padding-left: 30%; padding-right: 30%; padding-top: 10pt">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Search for a date location!</div>
+                        <div class="panel-body">Enter your location using a zipcode, and then search for dates in the
+                            area!
+                            You can check the directions, call them, and check our their Yelp page before you decide to
+                            go there!
+                        </div>
+                    </div>
+                </div>
             </c:otherwise>
         </c:choose>
-        </div>
     </div>
 </div>
 
