@@ -11,7 +11,8 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label for="zip">Enter your ZIP code (ex: 28223):</label>
-                    <input type="zip" class="form-control" id="zip" name="zip" required="true">
+                    <input type="zip" class="form-control" id="zip" name="zip" required="true"
+                           pattern="(^\d{5}([ \-]\d{4})?$)">
                 </div>
             </div>
             <div class="col-sm-6">
@@ -54,7 +55,8 @@
                     <c:forEach var="i" begin="0" end="${dates.size() - 1}">
 
                         <tr>
-                            <td><img source="${dates.get(i).getImg_url()}"></td>
+                            <td><img source="${dates.get(i).getImg_url()}" style="width: 50%" class="img-responsive"/>
+                            </td>
                             <td><c:out value="${dates.get(i).getName()}"/></td>
                             <td><c:out value="${dates.get(i).getRating()}"/></td>
                             <td><c:out value="${dates.get(i).getPhone()}"/></td>
@@ -68,7 +70,7 @@
                 </table>
             </c:when>
             <c:otherwise>
-            <p>Search for a location!</p>
+                <p align="center">Search for a location!</p>
             </c:otherwise>
         </c:choose>
         </div>

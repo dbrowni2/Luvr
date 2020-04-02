@@ -44,6 +44,7 @@ public class DatesDB {
                 date = new DateBean(stri.getJSONObject(i).getString("name"),stri.getJSONObject(i).getFloat("rating"),stri.getJSONObject(i).getString("phone"),(String)stri.getJSONObject(i).getString("price"), stri.getJSONObject(i).getJSONObject("location").getString("address1") + ", " + stri.getJSONObject(i).getJSONObject("location").getString("city") + ", " + stri.getJSONObject(i).getJSONObject("location").getString("state") + ", " + stri.getJSONObject(i).getJSONObject("location").getString("zip_code"),stri.getJSONObject(i).getString("id"),stri.getJSONObject(i).getString("url"),stri.getJSONObject(i).getInt("review_count"),stri.getJSONObject(i).getString("image_url"));
                 dates.add(date);
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
