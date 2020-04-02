@@ -7,7 +7,7 @@
 <div class="dateFinder" style="padding-left: 30pt; padding-right: 30pt">
     <form Method="post" action="<%= request.getContextPath()%>/dates">
         <h1>Find dates near you!</h1>
-        <div class="col-sm-4">
+        <div class="col-sm-8 col-lg-4">
             <div class="col-sm-6">
                 <div class="form-group">
                     <label for="zip">Enter your ZIP code (ex: 28223):</label>
@@ -21,14 +21,14 @@
             </div>
         </div>
     </form>
-    <div class="col-sm-4">
+    <div class="col-sm-4 col-lg-4">
         <label>Select the range you'd like to search in: </label>
         <br>
         <label class="radio-inline"><input type="radio" name="optradio" checked>5 miles</label>
         <label class="radio-inline"><input type="radio" name="optradio">10 miles</label>
         <label class="radio-inline"><input type="radio" name="optradio">25 miles</label>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-1 col-lg-4">
 
     </div>
     <br>
