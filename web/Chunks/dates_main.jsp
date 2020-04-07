@@ -20,21 +20,20 @@
             </div>
         </div>
 
-    <div class="col-sm-1 col-lg-4">
-        <div class="col-sm-4">
-            <label>Select the range you'd like to search in: </label>
+        <div class="col-sm-1 col-lg-4">
+            <div class="col-sm-4">
+                <label>Select the range you'd like to search in: </label>
+                <br>
+                <label class="radio-inline"><input type="radio" name="optradio" value="8046" checked>5 miles</label>
+                <label class="radio-inline"><input type="radio" name="optradio" value="16093">10 miles</label>
+                <label class="radio-inline"><input type="radio" name="optradio" value="40000">25 miles</label>
+            </div>
+
+
             <br>
-            <label class="radio-inline"><input type="radio" name="optradio" value="8046">5 miles</label>
-            <label class="radio-inline"><input type="radio" name="optradio" value="16093">10 miles</label>
-            <label class="radio-inline"><input type="radio" name="optradio" value="40000">25 miles</label>
         </div>
-
-
-
-    <br>
-</div>
     </form>
-<div style="padding: 20pt; align-content: center">
+    <div style="padding: 20pt; align-content: center">
     <div class="col-12 col-sm-12 col-lg-12">
         <div class="table table-responsive">
             <c:choose>

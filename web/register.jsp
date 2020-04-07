@@ -17,7 +17,7 @@
 <body>
 <jsp:include page="/Chunks/Nav.jsp"></jsp:include>
 
-<div id="signup" class="col-sm-4" style="padding-top: 5pt; padding-left: 20pt">
+<div id="signup" class="col-sm-4 col-sm-offset-4" style="padding-top: 5pt; padding-left: 20pt; alignment: center">
     <form action="<%= request.getContextPath()%>/Register" method="post" >
         <div class="form-group">
             <label for="email">Email:</label>
