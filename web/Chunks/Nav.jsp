@@ -13,45 +13,41 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">
-                <img src="${pageContext.request.contextPath}/images/LuvrLogo_dhrough.png" alt="luvrlogo" id="logo"
-                     width="30" height="30">
+            <a class="navbar-brand" href="<%= request.getContextPath() %>/Home?action=home">
+                <img src="${pageContext.request.contextPath}/images/LuvrLogo_dhrough.png" alt="luvrlogo" id="logo">
             </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li><a href="<%= request.getContextPath() %>/Home?action=home"> Home
-                    <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Link</a></li>
-            </ul>
-
             <form class="navbar-form navbar-left">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Search for Date Locations">
                 </div>
-                <button type="submit" class="btn btn-default">Find Date</button>
+                <button type="submit" class="btn btn-default"><i class="fas fa-search fa-fw"></i> Find Date</button>
             </form>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Click Here if You Hate Cybersecurity</a></li>
+                <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Click Here if You Hate Cybersecurity</a></li>
                 <li><a href="<%= request.getContextPath() %>/Home?action=dates">Dates</a></li>
                 <li class="dropdown"><c:choose>
                     <c:when test="${user == null}">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                             aria-expanded="false"> Not signed in <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="<%= request.getContextPath() %>/Home?action=login">Login</a></li>
-                        <li><a href="<%= request.getContextPath() %>/Home?action=register">Register</a></li>
+                        <li><a href="<%= request.getContextPath() %>/Home?action=login"><i class="fas fa-sign-in-alt fa-fw"></i> Login</a></li>
+                        <li><a href="<%= request.getContextPath() %>/Home?action=register"><i class="fas fa-user-plus fa-fw"></i> Register</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#"><i class="fas fa-file fa-fw"></i> Privacy Policy</a></li>
                     </ul></c:when>
                     <c:otherwise>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false"> ${user.uName} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="<%= request.getContextPath() %>/Home?action=account"><i class="fas fa-user fa-fw"></i> My account</a></li>
+                            <li><a href="<%= request.getContextPath() %>/Home?action=logout"><i class="fas fa-sign-out-alt fa-fw"></i> Logout</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#"><i class="fas fa-file fa-fw"></i> Privacy Policy</a></li>
                         </ul>
                     </c:otherwise>
                 </c:choose></li>
