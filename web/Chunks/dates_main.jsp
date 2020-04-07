@@ -68,6 +68,7 @@
                         <th scope="col" data-sorter="false">Location</th>
                         <th scope="col" data-sorter="false">Directions</th>
                         <th scope="col" data-sorter="false">Yelp Page</th>
+                        <th scope="col" data-sorter="false">Record</th>
                     </tr>
                     </thead>
                     <tbody>

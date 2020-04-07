@@ -51,8 +51,6 @@
                         </ul>
                     </c:otherwise>
                 </c:choose></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Privacy Policy</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
