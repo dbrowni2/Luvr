@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/Chunks/links.jsp"></jsp:include>
-<%@ page import="javax.servlet.http.*,javax.servlet.*, java.io.*, java.net.*, org.json.*" %>
 
 
 
@@ -20,14 +19,15 @@
                 <input type="submit" value="Find Dates" class="btn btn-default">
             </div>
         </div>
+        <div class="col-sm-4">
+            <label>Select the range you'd like to search in: </label>
+            <br>
+            <label class="radio-inline"><input type="radio" name="optradio" value="8046">5 miles</label>
+            <label class="radio-inline"><input type="radio" name="optradio" value="16093">10 miles</label>
+            <label class="radio-inline"><input type="radio" name="optradio" value="40000">25 miles</label>
+        </div>
     </form>
-    <div class="col-sm-4">
-        <label>Select the range you'd like to search in: </label>
-        <br>
-        <label class="radio-inline"><input type="radio" name="optradio" checked>5 miles</label>
-        <label class="radio-inline"><input type="radio" name="optradio">10 miles</label>
-        <label class="radio-inline"><input type="radio" name="optradio">25 miles</label>
-    </div>
+
     <div class="col-sm-4">
 
     </div>
@@ -39,7 +39,7 @@
             <c:choose>
             <c:when test="${dates != null}">
                 <table class="table table-striped table-hover">
-                    <caption><h2>Dates in: <c:out value="${param.get('zip')}"/></h2></caption>
+                    <caption><h2>Dates Found:</h2></caption>
                     <thead class="">
                     <tr>
                         <th scope="col">Name</th>
@@ -52,7 +52,11 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach var="i" begin="0" end="${dates.size() - 1}">
+                    <c:if test="${dates.size() != 0}">
+                        <c:set var="datenum" scope="request" value="${dates.size() - 1}"/>
+
+                    </c:if>
+                    <c:forEach var="i" begin="0" end="${datenum}">
 
                         <tr>
                             <td><c:out value="${dates.get(i).getName()}"/></td>
@@ -63,6 +67,15 @@
                             <td><a href="https://maps.google.com?saddr=Current+Location&daddr=${dates.get(i).location}"
                                    target="_blank">Get Directions</a></td>
                             <td><a href="${dates.get(i).getUrl()}">Yelp</a></td>
+                            <c:choose>
+                                <c:when test="${user != null}">
+                            <td><a href="<c:url value="${pageContext.request.contextPath}/Home?action=add_date">
+                            <c:param name="date" value="${dates.get(i).getId()}"/>
+                            </c:url>">I've been here!</a></td>
+                                </c:when>
+                                <c:otherwise> <td><a href="<c:url value="${pageContext.request.contextPath}/Home?action=login">
+                            </c:url>">You must be logged in record a date!</a></td></c:otherwise>
+                            </c:choose>
                         </tr>
 
                     </c:forEach>
@@ -77,14 +90,3 @@
     </div>
 </div>
 
-<%
-    StringBuilder res = new StringBuilder();
-    URL url = new URL("https://api.yelp.com/v3/businesses/search?location=28223&radius=5000");
-    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-    conn.setDoInput(true);
-    conn.setDoOutput(true);
-    conn.setRequestMethod("GET");
-    conn.setRequestProperty("Authorization", "Bearer MSTNVPev1fJLQUOBG-Ck-sBgnRomemMu6urbfvbzNF_S_RdD1CIs4W0sruIstSMNw3A1d749wVs4QFoSibdJwXC6mjwIZ2MhZVshXKtIJejLRIVm3XKXTzcfzCdYXnYx");
-
-
-%>

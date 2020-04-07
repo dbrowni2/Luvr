@@ -6,49 +6,38 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class User implements Serializable {
-    private String ID;
+    private int ID;
     private String uName;
     private String uEmail;
     private String uPass;
 
     public User() {
-        this.ID = null;
+        this.ID = 0;
         this.uName = null;
         this.uEmail = null;
         this.uPass = null;
     }
 
 
-    public User(String ID, String uName, String uEmail, String uPass) {
+    public User(int ID, String uName, String uEmail, String uPass) {
         this.ID = ID;
         this.uName = uName;
         this.uEmail = uEmail;
         this.uPass = uPass;
     }
     public User(String uName, String uEmail, String uPass){
-        Random r = new  Random();
 
-        int rawID = r.nextInt(10000);
-        String userID = rawID + "";
-        ArrayList<User> users = UserDB.getUsers();
-        for(User user: users){
-            if (userID.equals(user.getID()))
-            {
-                rawID = r.nextInt(10000);
-                userID = rawID + "";
-            }
-        }
-        this.ID = userID;
+        this.ID = ID;
         this.uName = uName;
         this.uEmail = uEmail;
         this.uPass = uPass;
     }
 
-    public String getID() {
+    public int getID() {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 

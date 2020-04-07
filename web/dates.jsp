@@ -17,33 +17,10 @@
 </head>
 <body>
 <jsp:include page="/Chunks/Nav.jsp"></jsp:include>
-<%
-    //jdbc:mysql://{host::localhost}?[:{port::3306}][/{database}?][\?<&,user={user},password={password},{:identifier}={:identifier}>]
-    String driver = "com.mysql.cj.jdbc.Driver";
-    //Connection conn = DriverManager.getConnection("mysql-luvr.thedanielhead.com");
-    driver = "com.mysql.jdbc.Driver";
-    String url = "jdbc:mysql://mysql-luvr.thedanielhead.com:3306/mysql_luvr";
-    try {
-        Class.forName(driver);
-    } catch (ClassNotFoundException e) {
-        e.printStackTrace();
-    }
-    String dUser = "public_one";
-    String dPass = "5C!qAmAw3qJyaRj";
 
-
-    try {
-        Connection cnx = DriverManager.getConnection(url, dUser, dPass);
-%>
 <jsp:include page="/Chunks/dates_main.jsp"></jsp:include>
 
-<%
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-    //Class.forName(driver).newInstance();
 
 
-%>
 </body>
 </html>

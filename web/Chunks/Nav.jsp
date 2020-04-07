@@ -24,7 +24,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="<%= request.getContextPath() %>/Home?action=home"> Home <span
                         class="sr-only">(current)</span></a></li>
-                <li><a href="#">Link</a></li>
+
             </ul>
             <form class="navbar-form navbar-left">
                 <div class="form-group">
@@ -44,14 +44,22 @@
                 </c:choose></li>
 
 
-                <li><a href="#">Click Here if You Hate Cybersecurity</a></li>
+
                 <li><a href="<%= request.getContextPath() %>/Home?action=dates">Dates</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false"> Me <span class="caret"></span></a>
                     <ul class="dropdown-menu">
+                        <c:choose>
+                            <c:when test="${user == null}">
                         <li><a href="<%= request.getContextPath() %>/Home?action=login">Login</a></li>
                         <li><a href="<%= request.getContextPath() %>/Home?action=register">Register</a></li>
+                            </c:when>
+                            <c:otherwise>
+                        <li><a href="/logout">Logout</a></li>
+                                <li><a href="<%= request.getContextPath() %>/Home?action=userdates">My Dates</a></li>
+                            </c:otherwise>
+                        </c:choose>
                         <li role="separator" class="divider"></li>
                         <li><a href="#">Privacy Policy</a></li>
                     </ul>

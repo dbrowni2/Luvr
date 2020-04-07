@@ -21,7 +21,7 @@ public class UserDB implements Serializable {
             rs = ps.executeQuery();
 
             while(rs.next()){
-                users.add(new User(rs.getString("userID"), rs.getString("userName"), rs.getString("userEmail"), rs.getString("userPass")));
+                users.add(new User(rs.getInt("ID"), rs.getString("userName"), rs.getString("userEmail"), rs.getString("userPass")));
             }
         } catch (SQLException | ClassNotFoundException | NoSuchMethodException e) {
             e.printStackTrace();
@@ -44,28 +44,15 @@ public class UserDB implements Serializable {
     }
 
     public static void addUser(String userName, String userEmail, String userPass) {
-    Random r = new  Random();
 
-        int rawID = r.nextInt(10000);
-         String userID = rawID + "";
-         users = getUsers();
-        for(User user: users){
-            if (userID.equals(user.getID()))
-            {
-                rawID = r.nextInt(10000);
-                 userID = rawID + "";
-            }
-        }
-        User user = new User(userID,userName,userEmail,userPass);
-        users.add(user);
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
             Connection con = DriverManager.getConnection("jdbc:mysql://mysql-luvr.thedanielhead.com/mysql_luvr", "std_db_user", "Lu-vr49er!");
-            PreparedStatement ps = con.prepareStatement("INSERT INTO users (userID, userName, userEmail, userPass) VALUES(?,?,?,?)");
-            ps.setString(1,userID);
-            ps.setString(2,userName);
-            ps.setString(3,userEmail);
-            ps.setString(4,userPass);
+            PreparedStatement ps = con.prepareStatement("INSERT INTO users ( userName, userEmail, userPass) VALUES(?,?,?)");
+            ps.setString(1,userName);
+            ps.setString(2,userEmail);
+            ps.setString(3,userPass);
 
             ps.executeUpdate();
 
@@ -86,11 +73,11 @@ users.add(user);
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
             Connection con = DriverManager.getConnection("jdbc:mysql://mysql-luvr.thedanielhead.com/mysql_luvr", "std_db_user", "Lu-vr49er!");
-            PreparedStatement ps = con.prepareStatement("INSERT INTO users (userID, userName, userEmail, userPass) VALUES(?,?,?,?)");
-            ps.setString(1,user.getID());
-            ps.setString(2,user.getuName());
-            ps.setString(3,user.getuEmail());
-            ps.setString(4,user.getuPass());
+            PreparedStatement ps = con.prepareStatement("INSERT INTO users ( userName, userEmail, userPass) VALUES(?,?,?)");
+
+            ps.setString(1,user.getuName());
+            ps.setString(2,user.getuEmail());
+            ps.setString(3,user.getuPass());
             ps.executeUpdate();
 
 
@@ -104,9 +91,9 @@ users.add(user);
             e.printStackTrace();
         }
     }
-    public static User getUserByID(String id){
+    public static User getUserByID(int id){
         for(User use: users){
-            if(use.getID().equalsIgnoreCase(id)){
+            if(use.getID() == id){
                 return use;
             }
         }

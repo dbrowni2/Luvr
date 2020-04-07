@@ -26,7 +26,7 @@ public class Dates extends HttpServlet {
         boolean redirect = false;
         String encode = null;
         String url = "/home";
-        if (request.getServletPath().equals("/dates")) {
+     if (request.getServletPath().equals("/dates")) {
             url = "/dates.jsp";
             session = request.getSession(true);
 
@@ -34,19 +34,16 @@ public class Dates extends HttpServlet {
             //Set the url and open the connection
             String zip = request.getParameter("zip");
             if(zip != null){
-            String rad = "5000";
+            String rad = request.getParameter("optradio");
 
          // actual date getting handled in DatesDB
             session.setAttribute("dates", DatesDB.getDates(zip, rad));
                 encode = response.encodeURL(request.getContextPath());
                 response.sendRedirect(encode + "/Home?action=dates");
-                redirect = true;
+
             }
         }
-/**
-        if (redirect) response.sendRedirect(request.getContextPath() + url);
-        else getServletContext().getRequestDispatcher(url).forward(request, response);
- **/
+
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
