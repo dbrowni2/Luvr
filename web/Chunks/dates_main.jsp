@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/Chunks/links.jsp"></jsp:include>
-<script src="${pageContext.request.contextPath}/tablesorter/jquery.tablesorter.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/tablesorter/jquery.tablesorter.min.js"></script>
 <script>
     $(function() {
         $("#locations").tablesorter();
@@ -29,7 +29,7 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label for="zip">Enter your ZIP code (ex: 28223):</label>
-                    <input type="zip" class="form-control" id="zip" name="zip" required="true"
+                    <input type="text" class="form-control" id="zip" name="zip" required
                            pattern="(^\d{5}([ \-]\d{4})?$)">
                 </div>
             </div>

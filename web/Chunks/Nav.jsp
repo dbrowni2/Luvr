@@ -14,7 +14,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="<%= request.getContextPath() %>/Home?action=home">
-                <img src="${pageContext.request.contextPath}/images/LuvrLogo_dhrough.png" alt="luvrlogo" id="logo">
+                <img src="${pageContext.request.contextPath}/static/images/LuvrLogo_dhrough.png" alt="luvrlogo" id="logo">
             </a>
         </div>
 
@@ -22,7 +22,9 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <form class="navbar-form navbar-left">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search for Date Locations">
+                    <label for="zip"></label>
+                    <input type="text" class="form-control" id="zip" name="zip" placeholder="Search for Date Locations"
+                           pattern="(^\d{5}([ \-]\d{4})?$)">
                 </div>
                 <button type="submit" class="btn btn-default"><i class="fas fa-search fa-fw"></i> Find Date</button>
             </form>
