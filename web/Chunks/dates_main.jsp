@@ -1,7 +1,26 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/Chunks/links.jsp"></jsp:include>
-
-
+<script src="${pageContext.request.contextPath}/tablesorter/jquery.tablesorter.min.js"></script>
+<script>
+    $(function() {
+        $("#locations").tablesorter();
+    });
+    function arrowed() {
+        let i = 0;
+        for (let h of $("#locations")[0].config.sortVars) {
+            if (h.sortedBy === "user") {
+                if (h.count === 0)
+                    document.getElementsByTagName("TH")[i].getElementsByTagName("I")[0].className = "fas fa-sort-up";
+                else
+                    document.getElementsByTagName("TH")[i].getElementsByTagName("I")[0].className = "fas fa-sort-down";
+            } else {
+                document.getElementsByTagName("TH")[i].getElementsByTagName("I")[0].className = "fas fa-sort";
+            }
+            i++;
+        }
+    }
+</script>
+<%@ page import="javax.servlet.http.*,javax.servlet.*, java.io.*, java.net.*, org.json.*" %>
 
 <div class="dateFinder" style="padding-left: 30pt; padding-right: 30pt">
     <form Method="post" action="<%= request.getContextPath()%>/dates">
@@ -38,17 +57,18 @@
         <div class="table table-responsive">
             <c:choose>
             <c:when test="${dates != null}">
-                <table class="table table-striped table-hover">
+                <table class="table table-striped table-hover" id="locations">
                     <caption><h2>Dates Found:</h2></caption>
                     <thead class="">
                     <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Rating</th>
-                        <th scope="col">Phone</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Directions</th>
-                        <th scope="col">Yelp Page</th>
+                        <th scope="col" onclick="arrowed()">Name <i class="fas fa-sort"></i></th>
+                        <th scope="col" onclick="arrowed()">Rating <i class="fas fa-sort"></i></th>
+                        <th scope="col" onclick="arrowed()">Price <i class="fas fa-sort"></i></th>
+                        <th scope="col" data-sorter="false">Phone</th>
+                        <th scope="col" data-sorter="false">Location</th>
+                        <th scope="col" data-sorter="false">Directions</th>
+                        <th scope="col" data-sorter="false">Yelp Page</th>
+                        <th scope="col" data-sorter="false">Record</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -62,12 +82,12 @@
                         <tr>
                             <td><c:out value="${dates.get(i).getName()}"/></td>
                             <td><c:out value="${dates.get(i).getRating()}"/></td>
+                            <td style="color: limegreen"><c:out value="${dates.get(i).getPrice()}"/></td>
                             <td><a href="tel:${dates.get(i).getPhone()}">${dates.get(i).getPhone()}</a></td>
-                            <td><c:out value="${dates.get(i).getPrice()}"/></td>
                             <td><c:out value="${dates.get(i).getLocation()}"/></td>
                             <td><a href="https://maps.google.com?saddr=Current+Location&daddr=${dates.get(i).location}"
-                                   target="_blank">Get Directions</a></td>
-                            <td><a href="${dates.get(i).getUrl()}">Yelp</a></td>
+                                   target="_blank"><i class="fas fa-directions"></i></a></td>
+                            <td><a href="${dates.get(i).getUrl()}"><i class="fab fa-yelp"></i></a></td>
                             <c:choose>
                                 <c:when test="${user != null}">
                             <td><a href="<c:url value="${pageContext.request.contextPath}/Home?action=add_date">
