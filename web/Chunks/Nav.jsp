@@ -36,44 +36,34 @@
 
             <ul class="nav navbar-nav navbar-right">
 
-                <li><c:choose>
-                    <c:when test="${user == null}">
-                    <p>Not signed in</p>
-                </c:when>
-                    <c:otherwise>
-                    <p>Signed in as <c:out value="${user.uName}"/></p>
-                </c:otherwise>
-                </c:choose></li>
+
 
 
 
                 <li><a href="<%= request.getContextPath() %>/Home?action=dates">Dates</a></li>
-                <li class="dropdown"><c:choose>
+                <li class="dropdown">
+                    <c:choose>
                     <c:when test="${user == null}">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                             aria-expanded="false"> Not signed in <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <c:choose>
-                            <c:when test="${user == null}">
                         <li><a href="<%= request.getContextPath() %>/Home?action=login">Login</a></li>
                         <li><a href="<%= request.getContextPath() %>/Home?action=register">Register</a></li>
-                            </c:when>
-                            <c:otherwise>
-                        <li><a href="/logout">Logout</a></li>
-                                <li><a href="<%= request.getContextPath() %>/Home?action=userdates">My Dates</a></li>
-                            </c:otherwise>
-                        </c:choose>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul></c:when>
+
+
+
+                    </ul>
+                    </c:when>
                     <c:otherwise>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false"> ${user.uName} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="/logout">Logout</a></li>
                         </ul>
                     </c:otherwise>
                 </c:choose></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Privacy Policy</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

@@ -19,7 +19,7 @@
                 <input type="submit" value="Find Dates" class="btn btn-default">
             </div>
         </div>
-    </form>
+
     <div class="col-sm-1 col-lg-4">
         <div class="col-sm-4">
             <label>Select the range you'd like to search in: </label>
@@ -28,13 +28,12 @@
             <label class="radio-inline"><input type="radio" name="optradio" value="16093">10 miles</label>
             <label class="radio-inline"><input type="radio" name="optradio" value="40000">25 miles</label>
         </div>
-    </form>
 
-    <div class="col-sm-4">
 
-    </div>
+
     <br>
 </div>
+    </form>
 <div style="padding: 20pt; align-content: center">
     <div class="col-12 col-sm-12 col-lg-12">
         <div class="table table-responsive">
@@ -55,10 +54,10 @@
                     </thead>
                     <tbody>
 
-                    <c:if test="${dates.size() != 0}">
-                        <c:set var="datenum" scope="request" value="${dates.size() - 1}"/>
+                    <c:if test="${dates != null}">
+                        <c:set var="datenum" scope="session" value="${dates.size() - 1}"/>
 
-                    </c:if>
+
                     <c:forEach var="i" begin="0" end="${datenum}">
 
                         <tr>
@@ -82,6 +81,7 @@
                         </tr>
 
                     </c:forEach>
+                    </c:if>
                     </tbody>
                 </table>
         </div>
