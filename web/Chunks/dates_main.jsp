@@ -6,7 +6,7 @@
 <div class="dateFinder" style="padding-left: 30pt; padding-right: 30pt">
     <form Method="post" action="<%= request.getContextPath()%>/dates">
         <h1>Find dates near you!</h1>
-        <div class="col-sm-4">
+        <div class="col-sm-8 col-lg-4">
             <div class="col-sm-6">
                 <div class="form-group">
                     <label for="zip">Enter your ZIP code (ex: 28223):</label>
@@ -19,6 +19,8 @@
                 <input type="submit" value="Find Dates" class="btn btn-default">
             </div>
         </div>
+    </form>
+    <div class="col-sm-1 col-lg-4">
         <div class="col-sm-4">
             <label>Select the range you'd like to search in: </label>
             <br>
@@ -52,6 +54,7 @@
                     </tr>
                     </thead>
                     <tbody>
+
                     <c:if test="${dates.size() != 0}">
                         <c:set var="datenum" scope="request" value="${dates.size() - 1}"/>
 
@@ -81,12 +84,22 @@
                     </c:forEach>
                     </tbody>
                 </table>
-            </c:when>
+        </div>
+
+        </c:when>
             <c:otherwise>
-                <p align="center">Search for a location!</p>
+                <div style="padding-left: 30%; padding-right: 30%; padding-top: 10pt">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Search for a date location!</div>
+                        <div class="panel-body">Enter your location using a zipcode, and then search for dates in the
+                            area!
+                            You can check the directions, call them, and check our their Yelp page before you decide to
+                            go there!
+                        </div>
+                    </div>
+                </div>
             </c:otherwise>
         </c:choose>
         </div>
     </div>
 </div>
-

@@ -14,7 +14,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">
-                <img src="${pageContext.request.contextPath}/../images/LuvrLogo_dhrough.png" alt="luvrlogo" id="logo"
+                <img src="${pageContext.request.contextPath}/images/LuvrLogo_dhrough.png" alt="luvrlogo" id="logo"
                      width="30" height="30">
             </a>
         </div>
@@ -24,14 +24,16 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="<%= request.getContextPath() %>/Home?action=home"> Home <span
                         class="sr-only">(current)</span></a></li>
-              
+
             </ul>
+
             <form class="navbar-form navbar-left">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Search for Date Locations">
                 </div>
                 <button type="submit" class="btn btn-default">Find Date</button>
             </form>
+
             <ul class="nav navbar-nav navbar-right">
 
                 <li><c:choose>
@@ -46,9 +48,10 @@
 
 
                 <li><a href="<%= request.getContextPath() %>/Home?action=dates">Dates</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false"> Me <span class="caret"></span></a>
+                <li class="dropdown"><c:choose>
+                    <c:when test="${user == null}">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false"> Not signed in <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <c:choose>
                             <c:when test="${user == null}">
@@ -62,8 +65,15 @@
                         </c:choose>
                         <li role="separator" class="divider"></li>
                         <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </li>
+                    </ul></c:when>
+                    <c:otherwise>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false"> ${user.uName} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </c:otherwise>
+                </c:choose></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
