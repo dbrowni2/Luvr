@@ -7,12 +7,13 @@ import org.json.JSONTokener;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class DatesDB {
+public class DatesDB implements Serializable {
     private static ArrayList<DateBean> dates;
 
     public DatesDB() {
@@ -43,6 +44,7 @@ public class DatesDB {
             for(int i = 0; i < stri.length(); i++){
                 date = new DateBean(stri.getJSONObject(i).getString("name"),stri.getJSONObject(i).getFloat("rating"),stri.getJSONObject(i).getString("phone"),(String)stri.getJSONObject(i).getString("price"), stri.getJSONObject(i).getJSONObject("location").getString("address1") + ", " + stri.getJSONObject(i).getJSONObject("location").getString("city") + ", " + stri.getJSONObject(i).getJSONObject("location").getString("state") + ", " + stri.getJSONObject(i).getJSONObject("location").getString("zip_code"),stri.getJSONObject(i).getString("id"),stri.getJSONObject(i).getString("url"),stri.getJSONObject(i).getInt("review_count"),stri.getJSONObject(i).getString("image_url"));
                 dates.add(date);
+
             }
 
         } catch (Exception e) {
@@ -51,6 +53,9 @@ public class DatesDB {
         return dates;
         }
         public static void addDate(){
+
+        }
+        public static void getDateName(String id){
 
         }
 }

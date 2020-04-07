@@ -38,27 +38,28 @@
                 <input type="submit" value="Find Dates" class="btn btn-default">
             </div>
         </div>
-    </form>
-    <div class="col-sm-4 col-lg-4">
-        <label>Select the range you'd like to search in: </label>
-        <br>
-        <label class="radio-inline"><input type="radio" name="optradio" checked>5 miles</label>
-        <label class="radio-inline"><input type="radio" name="optradio">10 miles</label>
-        <label class="radio-inline"><input type="radio" name="optradio">25 miles</label>
-    </div>
-    <div class="col-sm-1 col-lg-4">
 
-    </div>
-    <br>
-</div>
-<div style="padding: 20pt; align-content: center">
+        <div class="col-sm-1 col-lg-4">
+            <div class="col-sm-4">
+                <label>Select the range you'd like to search in: </label>
+                <br>
+                <label class="radio-inline"><input type="radio" name="optradio" value="8046" checked>5 miles</label>
+                <label class="radio-inline"><input type="radio" name="optradio" value="16093">10 miles</label>
+                <label class="radio-inline"><input type="radio" name="optradio" value="40000">25 miles</label>
+            </div>
+
+
+            <br>
+        </div>
+    </form>
+    <div style="padding: 20pt; align-content: center">
     <div class="col-12 col-sm-12 col-lg-12">
         <div class="table table-responsive">
             <c:choose>
             <c:when test="${dates != null}">
                 <table class="table table-striped table-hover" id="locations">
-                    <caption><h2>Dates in: <c:out value="${param.get('zip')}"/></h2></caption>
-                    <thead>
+                    <caption><h2>Dates Found:</h2></caption>
+                    <thead class="">
                     <tr>
                         <th scope="col" onclick="arrowed()">Name <i class="fas fa-sort"></i></th>
                         <th scope="col" onclick="arrowed()">Rating <i class="fas fa-sort"></i></th>
@@ -70,7 +71,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach var="i" begin="0" end="${dates.size() - 1}">
+
+                    <c:if test="${dates != null}">
+                        <c:set var="datenum" scope="session" value="${dates.size() - 1}"/>
+
+
+                    <c:forEach var="i" begin="0" end="${datenum}">
 
                         <tr>
                             <td><c:out value="${dates.get(i).getName()}"/></td>
@@ -81,9 +87,19 @@
                             <td><a href="https://maps.google.com?saddr=Current+Location&daddr=${dates.get(i).location}"
                                    target="_blank"><i class="fas fa-directions"></i></a></td>
                             <td><a href="${dates.get(i).getUrl()}"><i class="fab fa-yelp"></i></a></td>
+                            <c:choose>
+                                <c:when test="${user != null}">
+                            <td><a href="<c:url value="${pageContext.request.contextPath}/Home?action=add_date">
+                            <c:param name="date" value="${dates.get(i).getId()}"/>
+                            </c:url>">I've been here!</a></td>
+                                </c:when>
+                                <c:otherwise> <td><a href="<c:url value="${pageContext.request.contextPath}/Home?action=login">
+                            </c:url>">You must be logged in record a date!</a></td></c:otherwise>
+                            </c:choose>
                         </tr>
 
                     </c:forEach>
+                    </c:if>
                     </tbody>
                 </table>
         </div>
@@ -102,15 +118,6 @@
                 </div>
             </c:otherwise>
         </c:choose>
+        </div>
     </div>
 </div>
-
-<%
-    StringBuilder res = new StringBuilder();
-    URL url = new URL("https://api.yelp.com/v3/businesses/search?location=28223&radius=5000");
-    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-    conn.setDoInput(true);
-    conn.setDoOutput(true);
-    conn.setRequestMethod("GET");
-    conn.setRequestProperty("Authorization", "Bearer MSTNVPev1fJLQUOBG-Ck-sBgnRomemMu6urbfvbzNF_S_RdD1CIs4W0sruIstSMNw3A1d749wVs4QFoSibdJwXC6mjwIZ2MhZVshXKtIJejLRIVm3XKXTzcfzCdYXnYx");
-%>

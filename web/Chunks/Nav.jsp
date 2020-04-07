@@ -28,9 +28,9 @@
             </form>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Click Here if You Hate Cybersecurity</a></li>
                 <li><a href="<%= request.getContextPath() %>/Home?action=dates">Dates</a></li>
-                <li class="dropdown"><c:choose>
+                <li class="dropdown">
+                    <c:choose>
                     <c:when test="${user == null}">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                             aria-expanded="false"> Not signed in <span class="caret"></span></a>
@@ -44,13 +44,15 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false"> ${user.uName} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="<%= request.getContextPath() %>/Home?action=account"><i class="fas fa-user fa-fw"></i> My account</a></li>
+                            <li><a href="<%= request.getContextPath() %>/Home?action=userdates"><i class="fas fa-user fa-fw"></i> My Dates</a></li>
                             <li><a href="<%= request.getContextPath() %>/Home?action=logout"><i class="fas fa-sign-out-alt fa-fw"></i> Logout</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#"><i class="fas fa-file fa-fw"></i> Privacy Policy</a></li>
                         </ul>
                     </c:otherwise>
                 </c:choose></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Privacy Policy</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

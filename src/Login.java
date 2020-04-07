@@ -14,7 +14,7 @@ import org.owasp.esapi.ESAPI;
 import org.owasp.esapi.Validator;
 @WebServlet(name = "Login",
         description ="login controller",
-        urlPatterns = {"/login"}
+        urlPatterns = {"/login", "/logout"}
 )
 public class Login extends HttpServlet {
 
@@ -64,9 +64,11 @@ public class Login extends HttpServlet {
         }
 
         // The logout function is mapped to "/logout"
-       if (request.getServletPath().equals("/logout") && session != null) {
-            url = "/index.jsp";
+       if (request.getServletPath().equals("/logout")) {
             session.invalidate();
+           encode = response.encodeURL(request.getContextPath());
+           response.sendRedirect("/Home?action=home");
+
         }
 
         // The index page is mapped to "/home"
