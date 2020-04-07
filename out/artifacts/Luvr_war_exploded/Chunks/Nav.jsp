@@ -59,6 +59,7 @@
                            aria-expanded="false"> ${user.uName} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="/logout">Logout</a></li>
+                            <li><a href="<%= request.getContextPath() %>/Home?action=userdates">My Dates</a></li>
                         </ul>
                     </c:otherwise>
                 </c:choose></li>

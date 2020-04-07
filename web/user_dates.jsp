@@ -9,8 +9,8 @@
 <body>
 <jsp:include page="/Chunks/Nav.jsp"></jsp:include>
 <div class="table table-responsive">
-  <c:choose>
-    <c:when test="${user_dates != null}">
+
+
       <table class="table table-striped table-hover">
         <caption><h2>Dates Found:</h2></caption>
         <thead class="">
@@ -22,6 +22,8 @@
         </tr>
         </thead>
         <tbody>
+        <c:choose>
+        <c:when test="${user_dates.size() != 0}">
         <c:forEach var="i" begin="0" end="${user_dates.size() - 1}">
 
           <tr>
@@ -31,13 +33,17 @@
           </tr>
 
         </c:forEach>
+        </c:when>
+        <c:otherwise>
+          <h2>No dates found! Go out and find some!</h2>
+
+        </c:otherwise>
+        </c:choose>
         </tbody>
       </table>
-    </c:when>
-    <c:otherwise>
 
-    </c:otherwise>
-  </c:choose>
+
+
 </div>
 </body>
 </html>
