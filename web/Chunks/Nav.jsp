@@ -34,8 +34,8 @@
                 <li class="dropdown">
                     <c:choose>
                     <c:when test="${user == null}">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                            aria-expanded="false"> Not signed in <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false"> Not signed in <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="<%= request.getContextPath() %>/Home?action=login"><i class="fas fa-sign-in-alt fa-fw"></i> Login</a></li>
                         <li><a href="<%= request.getContextPath() %>/Home?action=register"><i class="fas fa-user-plus fa-fw"></i> Register</a></li>
@@ -43,16 +43,17 @@
                         <li><a href="#"><i class="fas fa-file fa-fw"></i> Privacy Policy</a></li>
                     </ul></c:when>
                     <c:otherwise>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false"> ${user.uName} <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="<%= request.getContextPath() %>/Home?action=userdates"><i class="fas fa-user fa-fw"></i> My Dates</a></li>
-                            <li><a href="<%= request.getContextPath() %>/Home?action=logout"><i class="fas fa-sign-out-alt fa-fw"></i> Logout</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="fas fa-file fa-fw"></i> Privacy Policy</a></li>
-                        </ul>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false"> ${user.uName} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<%= request.getContextPath() %>/Home?action=userdates"><i class="fas fa-user fa-fw"></i> My Dates</a></li>
+                        <li><a href="<%= request.getContextPath() %>/Home?action=logout"><i class="fas fa-sign-out-alt fa-fw"></i> Logout</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#"><i class="fas fa-file fa-fw"></i> Privacy Policy</a></li>
+                    </ul>
                     </c:otherwise>
-                </c:choose></li>
+                </c:choose>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

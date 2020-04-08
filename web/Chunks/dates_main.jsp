@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/Chunks/links.jsp"></jsp:include>
-<script src="${pageContext.request.contextPath}/static/tablesorter/jquery.tablesorter.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/scripts/jquery.tablesorter.min.js"></script>
 <script>
     $(function() {
         $("#locations").tablesorter();
@@ -90,12 +90,12 @@
                             <td><a href="${dates.get(i).getUrl()}"><i class="fab fa-yelp"></i></a></td>
                             <c:choose>
                                 <c:when test="${user != null}">
-                            <td><a href="<c:url value="${pageContext.request.contextPath}/Home?action=add_date">
+                            <td><a href="<c:url value="/Home?action=add_date">
                             <c:param name="date" value="${dates.get(i).getId()}"/>
-                            </c:url>">I've been here!</a></td>
+                            </c:url>" title="I've been here!"><i class="fas fa-clipboard"></i></a></td>
                                 </c:when>
-                                <c:otherwise> <td><a href="<c:url value="${pageContext.request.contextPath}/Home?action=login">
-                            </c:url>">You must be logged in record a date!</a></td></c:otherwise>
+                                <c:otherwise> <td><a href="<c:url value="/Home?action=login">
+                            </c:url>" title="Must be logged in" disabled><i class="fas fa-clipboard"></i></a></td></c:otherwise>
                             </c:choose>
                         </tr>
 
