@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 
@@ -47,7 +50,8 @@ public class UDContr extends HttpServlet {
             if(request.getServletPath().equals("/add_date")){
                 String id = request.getParameter("date");
                User user = (User)session.getAttribute("user");
-               UserDatesDB.addUserDate(Integer.parseInt(request.getParameter("rate")),user.getID(),id,"",Date.valueOf(request.getParameter("datevis")),UserDatesDB.getDetails(id));
+                Date datev = Date.valueOf(request.getParameter("datevis"));
+                UserDatesDB.addUserDate(Integer.parseInt(request.getParameter("rate")),user.getID(),id,"",datev,UserDatesDB.getDetails(id));
                 encode = response.encodeURL(request.getContextPath());
                 response.sendRedirect(encode + "/Home?action=userdates");
 

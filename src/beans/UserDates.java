@@ -1,6 +1,7 @@
 package beans;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class UserDates {
     private int numRating;

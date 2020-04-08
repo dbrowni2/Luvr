@@ -56,6 +56,11 @@ public class Home extends HttpServlet {
                 request.getRequestDispatcher("date_add.jsp").forward(request, response);
 
                 break;
+            case "logout":
+                session.invalidate();
+               String encode = response.encodeURL(request.getContextPath());
+                response.sendRedirect("/Home?action=home");
+                break;
             default:
                 break;
         }

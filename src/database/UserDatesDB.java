@@ -16,6 +16,10 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class UserDatesDB implements Serializable {
@@ -63,15 +67,20 @@ public class UserDatesDB implements Serializable {
         UserDates userDate = new UserDates(numRating, userID, dateID, rating, dateVisited, name);
         JSONObject root = null;
         ResultSet rs = null;
-        try {
+        try{
+        java.util.Date init = new SimpleDateFormat("yyyy-MM-dd").parse(dateVisited.toString());
+        String dateString2 = new SimpleDateFormat("MM/dd/yyyy").format(init);
+
+
+
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
             Connection con = DriverManager.getConnection("jdbc:mysql://mysql-luvr.thedanielhead.com/mysql_luvr", "std_db_user", "Lu-vr49er!");
-            PreparedStatement ps = con.prepareStatement("INSERT INTO user_dates (userID, dateID, rating, rating_numerical, date_time, name) VALUES (?,?,?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO user_dates (userID, dateID, rating, rating_numerical, date_time, name) VALUES (?,?,?,?, STR_TO_DATE( ?, '%m/%d/%Y'), ?)");
             ps.setInt(1, userID);
             ps.setString(2, dateID);
             ps.setString(3, rating);
             ps.setInt(4, numRating);
-            ps.setDate(5, dateVisited);
+            ps.setString(5, dateString2);
             ps.setString(6,name);
 
 
@@ -146,6 +155,8 @@ public class UserDatesDB implements Serializable {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
             e.printStackTrace();
         }
 
