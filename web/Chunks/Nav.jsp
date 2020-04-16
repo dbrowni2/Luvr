@@ -20,11 +20,12 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <form class="navbar-form navbar-left">
+            <form class="navbar-form navbar-left", method="POST" action="<%= request.getContextPath() %>/dates">
                 <div class="form-group">
                     <label for="zip"></label>
                     <input type="text" class="form-control" id="zip" name="zip" placeholder="Search for Date Locations"
                            pattern="(^\d{5}([ \-]\d{4})?$)">
+                    <input type="hidden" name="optradio" value="8046">
                 </div>
                 <button type="submit" class="btn btn-default"><i class="fas fa-search fa-fw"></i> Find Date</button>
             </form>

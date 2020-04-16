@@ -34,7 +34,7 @@ public class UDContr extends HttpServlet {
                 session = request.getSession(true);
 
                 User user = (User)session.getAttribute("user");
-                //Set the url and open the connection
+
 
                 if (user != null) {
 
