@@ -26,55 +26,25 @@ public class Login extends HttpServlet {
         // Get the session
         HttpSession session = request.getSession(true);
 
-
         // Set default url and initialize redirect (as opposed to forward) to false
         String url = "/login.jsp";
         boolean redirect = false;
-        boolean valid = false;
-        String error = "Invalid User name or password. Please try again";
         // The login function is mapped to "/login"
         if (request.getServletPath().equals("/login")) {
             session = request.getSession(true);
             if (session.getAttribute("user") != null) {
-
-
-
                 // Redirect so the url does not show "/login"
                 redirect = true;
             } else {
-                if (request.getParameter("email") == null || request.getParameter("pass") == null) {
-                    url = "/login.jsp";
-                } else {
-                    for (User user : UserDB.getUsers()) {
-                        if (user.getuEmail().equals(request.getParameter("email")) && user.getuPass().equals(request.getParameter("pass"))) {
-                            session.setAttribute("user", user);
-                            valid = true;
-                            encode = response.encodeURL(request.getContextPath());
-                            response.sendRedirect(encode + "/Home?action=userdates");
-                            error = "";
-
-
-                        }
-                    }
-                    if(!valid) {
-
+                for (User user : UserDB.getUsers()) {
+                    if (user.getuEmail().equals(request.getParameter("email")) && user.getuPass().equals(request.getParameter("pass"))) {
+                        session.setAttribute("user", user);
                         encode = response.encodeURL(request.getContextPath());
-                        response.sendRedirect(encode + "/Home?action=login");
-                        session.setAttribute("error",error);
+                        response.sendRedirect(encode + "/Home?action=userdates");
                     }
-
                 }
-
             }
-
-
         }
-
-
-
-
-
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -59,7 +59,7 @@ public class Home extends HttpServlet {
             case "logout":
                 session.invalidate();
                String encode = response.encodeURL(request.getContextPath());
-                response.sendRedirect("/Home?action=home");
+                response.sendRedirect(encode + "/Home?action=home");
                 break;
             default:
                 break;
