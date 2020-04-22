@@ -1,5 +1,6 @@
 import beans.User;
 import database.UserDB;
+import filters.BCrypt;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,7 +25,9 @@ public class Register extends HttpServlet {
         HttpSession session = request.getSession(true);
         UserDB udb = new UserDB();
         ArrayList<User> users = udb.getUsers();
-        User user = new User(request.getParameter("name"), request.getParameter("email"),request.getParameter("pass"));
+        String hashed = BCrypt.hashpw(request.getParameter("pass"), BCrypt.gensalt());
+
+        User user = new User(request.getParameter("name"), request.getParameter("email"), hashed);
         udb.addUser(user);
         session.setAttribute("user", user);
         encode = response.encodeURL(request.getContextPath());
