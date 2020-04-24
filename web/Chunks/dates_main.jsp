@@ -1,3 +1,10 @@
+<!-- TESTING SITE BEGINS-->
+<%@ page import = "java.io.*,java.util.*,java.sql.*"%>
+<%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/sql" prefix = "sql"%>
+<!-- TESTING SITE ENDS-->
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="/Chunks/links.jsp"></jsp:include>
 <script src="${pageContext.request.contextPath}/static/scripts/jquery.tablesorter.min.js"></script>
@@ -43,7 +50,7 @@
             <div class="col-sm-4">
                 <label>Select the range you'd like to search in: </label>
                 <br>
-                <label class="radio-inline"><input type="radio" name="optradio" value="8046" checked>5 miles</label>
+                <label class="radio-inline"><input type="radio" name="optradio" value="8046"checked>5 miles</label>
                 <label class="radio-inline"><input type="radio" name="optradio" value="16093">10 miles</label>
                 <label class="radio-inline"><input type="radio" name="optradio" value="40000">25 miles</label>
             </div>

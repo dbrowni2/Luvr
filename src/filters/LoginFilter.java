@@ -27,7 +27,7 @@ public class LoginFilter implements Filter {
 
         // find user
         for(User user: UserDB.getUsers()) {
-            if(user.getuEmail().equals(email) && user.getuPass().equals(pass)){
+            if(user.getuEmail().equals(email) && BCrypt.checkpw(request.getParameter("pass"),user.getuPass())){
                 filterUser = user;
             }
         }

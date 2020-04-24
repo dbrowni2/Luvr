@@ -10,6 +10,7 @@ import java.sql.*;
 
 import beans.User;
 import database.UserDB;
+import filters.BCrypt;
 import org.owasp.esapi.ESAPI;
 import org.owasp.esapi.Encoder;
 import org.owasp.esapi.Validator;
@@ -29,6 +30,7 @@ public class Login extends HttpServlet {
         // Set default url and initialize redirect (as opposed to forward) to false
         String url = "/login.jsp";
         boolean redirect = false;
+       String pass= request.getParameter("pass");
         // The login function is mapped to "/login"
         if (request.getServletPath().equals("/login")) {
             session = request.getSession(true);
@@ -37,7 +39,7 @@ public class Login extends HttpServlet {
                 redirect = true;
             } else {
                 for (User user : UserDB.getUsers()) {
-                    if (user.getuEmail().equals(request.getParameter("email")) && user.getuPass().equals(request.getParameter("pass"))) {
+                    if (user.getuEmail().equals(request.getParameter("email")) && BCrypt.checkpw(request.getParameter("pass"),user.getuPass())){
                         session.setAttribute("user", user);
                         encode = response.encodeURL(request.getContextPath());
                         response.sendRedirect(encode + "/Home?action=userdates");
