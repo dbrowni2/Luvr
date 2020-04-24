@@ -61,6 +61,9 @@ public class Home extends HttpServlet {
                String encode = response.encodeURL(request.getContextPath());
                 response.sendRedirect(encode + "/Home?action=home");
                 break;
+            case "forgotpw":
+                request.getRequestDispatcher("forgotpw.jsp").forward(request, response);
+                break;
             default:
                 break;
         }

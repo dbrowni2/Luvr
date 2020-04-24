@@ -40,6 +40,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="<%= request.getContextPath() %>/Home?action=login"><i class="fas fa-sign-in-alt fa-fw"></i> Login</a></li>
                         <li><a href="<%= request.getContextPath() %>/Home?action=register"><i class="fas fa-user-plus fa-fw"></i> Register</a></li>
+                        <li><a href="<%= request.getContextPath() %>/Home?action=forgotpw"><i class="fas fa-box fa-fw"></i> Forgot Password?</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#"><i class="fas fa-file fa-fw"></i> Privacy Policy</a></li>
                     </ul></c:when>
