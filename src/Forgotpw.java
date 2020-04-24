@@ -32,7 +32,7 @@ public class Forgotpw extends HttpServlet {
             }
         }
         if(found) {
-            Email from = new Email("mhach@uncc.edu");
+            Email from = new Email("luvr49er@protonmail.com");
             String subject = "Luvr Password Reset";
             Email to = new Email(email);
             Content content = new Content("text/plain", "Here is your password: " + pass);
