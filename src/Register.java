@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 @WebServlet(name = "Register",
@@ -28,10 +27,12 @@ public class Register extends HttpServlet {
         String hashed = BCrypt.hashpw(request.getParameter("pass"), BCrypt.gensalt());
 
         User user = new User(request.getParameter("name"), request.getParameter("email"), hashed);
-        udb.addUser(user);
-        session.setAttribute("user", user);
+        if (udb.addUser(user)) {
+            session.setAttribute("user", user);
+        }
         encode = response.encodeURL(request.getContextPath());
         response.sendRedirect(encode + "/Home?action=home");
+
     }
 
 
