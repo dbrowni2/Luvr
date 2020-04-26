@@ -1,7 +1,6 @@
 import beans.User;
 import beans.UserDates;
 import database.UserDatesDB;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,18 +10,21 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(name = "Home",
+@WebServlet(
+        name = "Home",
         description = "home controller",
         urlPatterns = {"/Home"}
 )
 public class Home extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        // TODO: implement Home.doPost()
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         HttpSession session = request.getSession(true);
+
         // forward to controller url instead of jsp via action
         switch(action) {
             case "login":
@@ -38,13 +40,15 @@ public class Home extends HttpServlet {
                 request.getRequestDispatcher("dates.jsp").forward(request, response);
                 break;
             case "userdates":
-                User user = (User) session.getAttribute("user");
+                User user= (User)session.getAttribute("user");
                 String uEmail = user.getuEmail();
+
                 // actual date getting handled in DatesDB
                 ArrayList<UserDates> dates = UserDatesDB.getUserDates(uEmail);
                 session.setAttribute("user_dates", dates);
-                    request.getRequestDispatcher("user_dates.jsp").forward(request, response);
-                    break;
+
+                request.getRequestDispatcher("user_dates.jsp").forward(request, response);
+                break;
             case "add_date":
                 String id = request.getParameter("date");
                 String name = UserDatesDB.getDetails(id);
@@ -53,7 +57,6 @@ public class Home extends HttpServlet {
                 request.setAttribute("id",id);
 
                 request.getRequestDispatcher("date_add.jsp").forward(request, response);
-
                 break;
             case "logout":
                 session.invalidate();

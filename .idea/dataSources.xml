@@ -7,11 +7,5 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://mysql-luvr.thedanielhead.com/mysql_luvr</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="@Luvr" uuid="9bdef1f6-3cd9-45a7-9976-a2540ddb628d">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://mysql-luvr.thedanielhead.com:3306</jdbc-url>
-    </data-source>
   </component>
 </project>
