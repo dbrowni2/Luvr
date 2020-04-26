@@ -1,7 +1,6 @@
 package database;
 
 
-import beans.User;
 import beans.UserDates;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -16,30 +15,28 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.sql.*;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class UserDatesDB implements Serializable {
     private static ArrayList<UserDates> userDates;
 
 
-    public static ArrayList<UserDates> getUserDates(int userID) {
+    public static ArrayList<UserDates> getUserDates(String userEmail) {
         ResultSet rs = null;
         try {
             userDates = new ArrayList<>();
 
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
             Connection con = DriverManager.getConnection("jdbc:mysql://mysql-luvr.thedanielhead.com/mysql_luvr", "std_db_user", "Lu-vr49er!");
-            PreparedStatement ps = con.prepareStatement("select * from user_dates where userID = ?");
-            ps.setInt(1, userID);
+            PreparedStatement ps = con.prepareStatement("select * from user_dates where userEmail = ?");
+            ps.setString(1, userEmail);
 
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                userDates.add(new UserDates(rs.getInt("rating_numerical"), rs.getInt("ID"), rs.getString("dateID"), rs.getString("rating"), rs.getDate("date_time"),rs.getString("name")));
+                userDates.add(new UserDates(rs.getInt("rating_numerical"), rs.getString("userEmail"), rs.getString("dateID"), rs.getString("rating"), rs.getDate("date_time"), rs.getString("name")));
 
             }
         } catch (SQLException | ClassNotFoundException | NoSuchMethodException e) {
@@ -63,25 +60,24 @@ public class UserDatesDB implements Serializable {
 
     }
 
-    public static void addUserDate(int numRating, int userID, String dateID, String rating, Date dateVisited, String name) {
-        UserDates userDate = new UserDates(numRating, userID, dateID, rating, dateVisited, name);
+    public static void addUserDate(int numRating, String userEmail, String dateID, String rating, Date dateVisited, String name) {
+        UserDates userDate = new UserDates(numRating, userEmail, dateID, rating, dateVisited, name);
         JSONObject root = null;
         ResultSet rs = null;
-        try{
-        java.util.Date init = new SimpleDateFormat("yyyy-MM-dd").parse(dateVisited.toString());
-        String dateString2 = new SimpleDateFormat("MM/dd/yyyy").format(init);
-
+        try {
+            java.util.Date init = new SimpleDateFormat("yyyy-MM-dd").parse(dateVisited.toString());
+            String dateString2 = new SimpleDateFormat("MM/dd/yyyy").format(init);
 
 
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
             Connection con = DriverManager.getConnection("jdbc:mysql://mysql-luvr.thedanielhead.com/mysql_luvr", "std_db_user", "Lu-vr49er!");
-            PreparedStatement ps = con.prepareStatement("INSERT INTO user_dates (userID, dateID, rating, rating_numerical, date_time, name) VALUES (?,?,?,?, STR_TO_DATE( ?, '%m/%d/%Y'), ?)");
-            ps.setInt(1, userID);
+            PreparedStatement ps = con.prepareStatement("INSERT INTO user_dates (userEmail, dateID, rating, rating_numerical, date_time, name) VALUES (?,?,?,?, STR_TO_DATE( ?, '%m/%d/%Y'), ?)");
+            ps.setString(1, userEmail);
             ps.setString(2, dateID);
             ps.setString(3, rating);
             ps.setInt(4, numRating);
             ps.setString(5, dateString2);
-            ps.setString(6,name);
+            ps.setString(6, name);
 
 
             ps.executeUpdate();
@@ -106,7 +102,7 @@ public class UserDatesDB implements Serializable {
             }
 
             ps = con.prepareStatement("SELECT tags FROM users where id = ?");
-            ps.setInt(1,userID);
+            ps.setString(1, userEmail);
             rs = ps.executeQuery();
 
                 if(rs.next()){
@@ -138,8 +134,8 @@ public class UserDatesDB implements Serializable {
                 comma=", ";
             }
             ps = con.prepareStatement("UPDATE users SET tags = ? where ID = ? ");
-            ps.setString(1,allTags.toString());
-            ps.setInt(2,userID);
+            ps.setString(1, allTags.toString());
+            ps.setString(2, userEmail);
             ps.executeUpdate();
 
         } catch (SQLException | ClassNotFoundException | NoSuchMethodException e) {

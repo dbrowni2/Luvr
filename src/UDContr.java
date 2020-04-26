@@ -34,9 +34,9 @@ public class UDContr extends HttpServlet {
 
                 if (user != null) {
 
-                    int id = user.getID();
+                    String uEmail = user.getuEmail();
                     // actual date getting handled in DatesDB
-                    ArrayList<UserDates> dates = UserDatesDB.getUserDates(id);
+                    ArrayList<UserDates> dates = UserDatesDB.getUserDates(uEmail);
                     session.setAttribute("user_dates", dates);
                     encode = response.encodeURL(request.getContextPath());
                     response.sendRedirect(encode + "/Home?action=userdates");
@@ -47,7 +47,7 @@ public class UDContr extends HttpServlet {
                 String id = request.getParameter("date");
                 User user = (User) session.getAttribute("user");
                 Date datev = Date.valueOf(request.getParameter("datevis"));
-                UserDatesDB.addUserDate(Integer.parseInt(request.getParameter("rate")), user.getID(), id, "", datev, UserDatesDB.getDetails(id));
+                UserDatesDB.addUserDate(Integer.parseInt(request.getParameter("rate")), user.getuEmail(), id, "", datev, UserDatesDB.getDetails(id));
                 encode = response.encodeURL(request.getContextPath());
                 response.sendRedirect(encode + "/Home?action=userdates");
 

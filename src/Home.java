@@ -1,6 +1,5 @@
 import beans.User;
 import beans.UserDates;
-import database.DatesDB;
 import database.UserDatesDB;
 
 import javax.servlet.ServletException;
@@ -39,10 +38,10 @@ public class Home extends HttpServlet {
                 request.getRequestDispatcher("dates.jsp").forward(request, response);
                 break;
             case "userdates":
-                User user= (User)session.getAttribute("user");
-                int uid = user.getID();
+                User user = (User) session.getAttribute("user");
+                String uEmail = user.getuEmail();
                 // actual date getting handled in DatesDB
-                ArrayList<UserDates> dates = UserDatesDB.getUserDates(uid);
+                ArrayList<UserDates> dates = UserDatesDB.getUserDates(uEmail);
                 session.setAttribute("user_dates", dates);
                     request.getRequestDispatcher("user_dates.jsp").forward(request, response);
                     break;

@@ -14,7 +14,7 @@ public class UserDates {
     public UserDates() {
     }
 
-    public UserDates(int numRating, String dateID, String rating, Date dateVisited, String name, String userEmail) {
+    public UserDates(int numRating, String userEmail, String dateID, String rating, Date dateVisited, String name) {
         this.numRating = numRating;
         this.dateID = dateID;
         this.rating = rating;
