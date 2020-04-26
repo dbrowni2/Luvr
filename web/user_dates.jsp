@@ -47,33 +47,33 @@
     <thead class="">
     <tr>
     <th scope="col" onclick="arrowed()">Name <i class="fas fa-sort"></i></th>
-    <th scope="col" onclick="arrowed()">Rating <i class="fas fa-sort"></i></th>
-    <th scope="col" onclick="arrowed()">Price <i class="fas fa-sort"></i></th>
-    <th scope="col" data-sorter="false">Phone</th>
-    <th scope="col" data-sorter="false">Location</th>
-    <th scope="col" data-sorter="false">Directions</th>
-    <th scope="col" data-sorter="false">Yelp Page</th>
+        <th scope="col" onclick="arrowed()">Rating <i class="fas fa-sort"></i></th>
+        <th scope="col" onclick="arrowed()">Price <i class="fas fa-sort"></i></th>
+        <th scope="col" data-sorter="false">Phone</th>
+        <th scope="col" data-sorter="false">Location</th>
+        <th scope="col" data-sorter="false">Directions</th>
+        <th scope="col" data-sorter="false">Yelp Page</th>
     </tr>
     </thead>
-    <tbody>
+        <tbody>
 
-    <c:if test="${dates != null}">
-      <c:set var="datenum" scope="session" value="${dates.size() - 1}"/>
+        <c:if test="${recDates != null}">
+            <c:set var="datenum" scope="session" value="${recDates.size() - 1}"/>
 
-      <c:forEach var="i" begin="0" end="9">
+            <c:forEach var="i" begin="0" end="9">
 
-          <tr>
-              <td><c:out value="${dates.get(i).getName()}"/></td>
-              <td><c:out value="${dates.get(i).getRating()}"/></td>
-              <td style="color: limegreen"><c:out value="${dates.get(i).getPrice()}"/></td>
-              <td><a href="tel:${dates.get(i).getPhone()}">${dates.get(i).getPhone()}</a></td>
-              <td><c:out value="${dates.get(i).getLocation()}"/></td>
-              <td><a href="https://maps.google.com?saddr=Current+Location&daddr=${dates.get(i).location}"
-                     target="_blank"><i class="fas fa-directions"></i></a></td>
-              <td><a href="${dates.get(i).getUrl()}"><i class="fab fa-yelp"></i></a></td>
-        </tr>
+                <tr>
+                    <td><c:out value="${recDates.get(i).getName()}"/></td>
+                    <td><c:out value="${recDates.get(i).getRating()}"/></td>
+                    <td style="color: limegreen"><c:out value="${recDates.get(i).getPrice()}"/></td>
+                    <td><a href="tel:${recDates.get(i).getPhone()}">${recDates.get(i).getPhone()}</a></td>
+                    <td><c:out value="${recDates.get(i).getLocation()}"/></td>
+                    <td><a href="https://maps.google.com?saddr=Current+Location&daddr=${recDates.get(i).location}"
+                           target="_blank"><i class="fas fa-directions"></i></a></td>
+                    <td><a href="${recDates.get(i).getUrl()}"><i class="fab fa-yelp"></i></a></td>
+                </tr>
 
-      </c:forEach>
+            </c:forEach>
     </c:if>
     </tbody>
     </table>
