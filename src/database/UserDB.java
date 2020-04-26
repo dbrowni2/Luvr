@@ -1,38 +1,35 @@
 package database;
-import beans.User;
 
+import beans.User;
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class UserDB implements Serializable {
-    private static ArrayList<User> users;
 
-    public static ArrayList<User> getUsers()  {
-        ResultSet rs = null;
+    static ArrayList<User> users; // TODO: get rid of this, query the DB instead (if it'll work)
+    static final String DB_DRVR = "com.mysql.cj.jdbc.Driver";
+    static final String DB_URI  = "jdbc:mysql://mysql-luvr.thedanielhead.com/mysql_luvr";
+    static final String DB_USER = "std_db_user";
+    static final String DB_PASS = "Lu-vr49er!";
+
+    public static ArrayList<User> getUsers() {
         try {
             users = new ArrayList<>(2);
-            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
-            Connection con = DriverManager.getConnection("jdbc:mysql://mysql-luvr.thedanielhead.com/mysql_luvr", "std_db_user", "Lu-vr49er!");
-            PreparedStatement ps = con.prepareStatement("select * from users");
+            Class.forName(DB_DRVR).getDeclaredConstructor().newInstance();
+            Connection con = DriverManager.getConnection(DB_URI, DB_USER, DB_PASS);
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM users");
+            ResultSet rs = ps.executeQuery();
 
-            rs = ps.executeQuery();
+            while (rs.next())
+                users.add(new User(rs.getString("userName"), rs.getString("userEmail"), rs.getString("userPass")));
 
-            while(rs.next()){
-                users.add(new User(rs.getInt("ID"), rs.getString("userName"), rs.getString("userEmail"), rs.getString("userPass")));
-            }
-        } catch (SQLException | ClassNotFoundException | NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
+        } catch (SQLException | ClassNotFoundException | NoSuchMethodException | IllegalAccessException |
+                InstantiationException | InvocationTargetException | NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-
 
 //        // Create two SwapOffers: one from the first user, the other from the second
 //        createSwapOffer(users.get(0), users.get(1), ItemDB.getItemById("a1"), ItemDB.getItemById("a4"));
@@ -43,61 +40,31 @@ public class UserDB implements Serializable {
         return users;
     }
 
-    public static void addUser(String userName, String userEmail, String userPass) {
-
+    public static void addUser(User user) {
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
-            Connection con = DriverManager.getConnection("jdbc:mysql://mysql-luvr.thedanielhead.com/mysql_luvr", "std_db_user", "Lu-vr49er!");
-            PreparedStatement ps = con.prepareStatement("INSERT INTO users ( userName, userEmail, userPass) VALUES(?,?,?)");
-            ps.setString(1,userName);
-            ps.setString(2,userEmail);
-            ps.setString(3,userPass);
-
-            ps.executeUpdate();
-
-
-        } catch (SQLException | ClassNotFoundException | NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        }
-
-    }
-    public static void addUser(User user){
-users.add(user);
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
-            Connection con = DriverManager.getConnection("jdbc:mysql://mysql-luvr.thedanielhead.com/mysql_luvr", "std_db_user", "Lu-vr49er!");
-            PreparedStatement ps = con.prepareStatement("INSERT INTO users ( userName, userEmail, userPass) VALUES(?,?,?)");
-
+            Class.forName(DB_DRVR).getDeclaredConstructor().newInstance();
+            Connection con = DriverManager.getConnection(DB_URI, DB_USER, DB_PASS);
+            PreparedStatement ps = con.prepareStatement("INSERT INTO users (userName, userEmail, userPass) VALUES(?,?,?)");
             ps.setString(1,user.getuName());
             ps.setString(2,user.getuEmail());
             ps.setString(3,user.getuPass());
             ps.executeUpdate();
+            users.add(user);
 
-
-        } catch (SQLException | ClassNotFoundException | NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
+        } catch (SQLException | ClassNotFoundException | NoSuchMethodException | IllegalAccessException |
+                InstantiationException | InvocationTargetException e) {
             e.printStackTrace();
         }
     }
-    public static User getUserByID(int id){
-        for(User use: users){
-            if(use.getID() == id){
-                return use;
+
+    public static User getUserByEmail(String email) {
+
+        for(User u : UserDB.getUsers()) {
+            if(u.getuEmail().equals(email)) {
+                return u;
             }
         }
         return null;
     }
-
 }

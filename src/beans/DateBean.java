@@ -2,20 +2,9 @@ package beans;
 
 public class DateBean {
 
-    private String name, phone,price,location,id,url,img_url;
-    private int review_count;
-    private float rating;
-    public DateBean() {
-        this.name = null;
-        this.rating = 0;
-        this.phone = null;
-        this.price = null;
-        this.location = null;
-        this.id = null;
-        this.url = null;
-        this.review_count = 0;
-        this.img_url=null;
-    }
+    String name, phone, price, location, id, url, img_url;
+    int review_count;
+    float rating;
 
     public DateBean(String name, float rating, String phone, String price, String location, String id, String url, int review_count, String img_url) {
         this.name = name;
@@ -32,7 +21,6 @@ public class DateBean {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -40,7 +28,6 @@ public class DateBean {
     public float getRating() {
         return rating;
     }
-
     public void setRating(float rating) {
         this.rating = rating;
     }
@@ -48,7 +35,6 @@ public class DateBean {
     public String getPhone() {
         return phone;
     }
-
     public void setPhone(String phone) {
         this.phone = phone;
     }
@@ -56,7 +42,6 @@ public class DateBean {
     public String getPrice() {
         return price;
     }
-
     public void setPrice(String price) {
         this.price = price;
     }
@@ -64,7 +49,6 @@ public class DateBean {
     public String getLocation() {
         return location;
     }
-
     public void setLocation(String location) {
         this.location = location;
     }
@@ -72,7 +56,6 @@ public class DateBean {
     public String getId() {
         return id;
     }
-
     public void setId(String id) {
         this.id = id;
     }
@@ -80,7 +63,6 @@ public class DateBean {
     public String getUrl() {
         return url;
     }
-
     public void setUrl(String url) {
         this.url = url;
     }
@@ -88,7 +70,6 @@ public class DateBean {
     public int getReview_count() {
         return review_count;
     }
-
     public void setReview_count(int review_count) {
         this.review_count = review_count;
     }
@@ -96,7 +77,6 @@ public class DateBean {
     public String getImg_url() {
         return img_url;
     }
-
     public void setImg_url(String img_url) {
         this.img_url = img_url;
     }
@@ -104,14 +84,14 @@ public class DateBean {
     @Override
     public String toString() {
         return "DateBean{" +
-                "name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", price='" + price + '\'' +
-                ", location='" + location + '\'' +
-                ", id='" + id + '\'' +
-                ", url='" + url + '\'' +
+                "name='"          + name     + "'" +
+                ", phone='"       + phone    + "'" +
+                ", price='"       + price    + "'" +
+                ", location='"    + location + "'" +
+                ", id='"          + id       + "'" +
+                ", url='"         + url      + "'" +
                 ", review_count=" + review_count +
-                ", rating=" + rating +
-                '}';
+                ", rating="       + rating +
+                "}";
     }
 }

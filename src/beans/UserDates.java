@@ -1,49 +1,39 @@
 package beans;
 
 import java.sql.Date;
-import java.time.LocalDate;
 
 public class UserDates {
-    private int numRating;
-    private int userID;
-    private String dateID;
-    private String rating;
-    private String name;
-    private Date dateVisited;
 
-    public UserDates() {
-    }
+    int numRating;
+    String userEmail, dateID, rating, name;
+    Date dateVisited;
 
-    public UserDates(int numRating, int userID, String dateID, String rating, Date dateVisited, String name) {
+    public UserDates(int numRating, String userEmail, String dateID, String rating, Date dateVisited, String name) {
         this.numRating = numRating;
-        this.userID = userID;
+        this.userEmail = userEmail;
         this.dateID = dateID;
         this.rating = rating;
         this.dateVisited = dateVisited;
         this.name = name;
     }
 
-
     public int getNumRating() {
         return numRating;
     }
-
     public void setNumRating(int numRating) {
         this.numRating = numRating;
     }
 
-    public int getUserID() {
-        return userID;
+    public String getUserEmail() {
+        return userEmail;
     }
-
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public String getDateID() {
         return dateID;
     }
-
     public void setDateID(String dateID) {
         this.dateID = dateID;
     }
@@ -51,7 +41,6 @@ public class UserDates {
     public String getRating() {
         return rating;
     }
-
     public void setRating(String rating) {
         this.rating = rating;
     }
@@ -59,7 +48,6 @@ public class UserDates {
     public Date getDateVisited() {
         return dateVisited;
     }
-
     public void setDateVisited(Date dateVisited) {
         this.dateVisited = dateVisited;
     }
@@ -67,7 +55,6 @@ public class UserDates {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
