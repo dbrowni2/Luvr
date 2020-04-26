@@ -35,7 +35,7 @@ public class UserDatesDB implements Serializable {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next())
-                userDates.add(new UserDates(rs.getInt("rating_numerical"), rs.getString("email"),
+                userDates.add(new UserDates(rs.getInt("rating_numerical"), rs.getString("userEmail"),
                         rs.getString("dateID"), rs.getString("rating"), rs.getDate("date_time"),
                         rs.getString("name")));
 

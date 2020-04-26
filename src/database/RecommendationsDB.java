@@ -22,7 +22,7 @@ public class RecommendationsDB implements Serializable {
         // TODO: implement RecommendationsDB.RecommendationsDB()
     }
 
-    public static ArrayList<DateBean> getDates(String location, String rad, String tag) {
+    public static ArrayList<DateBean> getDates(String location, String rad, ArrayList<String> tag) {
         try {
             URL uri = new URL("https://api.yelp.com/v3/businesses/search?location=" + location + "&radius=" + rad +
                     "&term=" + tag);
