@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 @WebServlet(name = "Dates",
         description ="dates controller",
-        urlPatterns = {"/dates"}
+        urlPatterns = {"/dates", "/user_dates"}
 )
 public class Dates extends HttpServlet {
 
@@ -45,25 +45,25 @@ public class Dates extends HttpServlet {
             }
         }
 
-        if (request.getServletPath().equals("/user_dates")) {
+        if (request.getServletPath().equals("/userdates") || request.getServletPath().equals("/user_dates")) {
             url = "/user_dates.jsp";
             session = request.getSession(true);
-
+            User user = (User) session.getAttribute("user");
 
             //Set the url and open the connection
             String zip = request.getParameter("zip");
-            ArrayList<String> tags = RecommendationsDB.getUserTags((User) session.getAttribute("user"));
+            ArrayList<String> tags = RecommendationsDB.getUserTags(user);
 
 
             if (zip != null && tags.size() > 0) {
                 String rad = "10000";
                 zip = "28223";
 
-                // actual date getting handled in DatesDB
+                System.out.println("getting recDates");
 
                 session.setAttribute("recDates", RecommendationsDB.getDates(zip, rad, tags));
                 encode = response.encodeURL(request.getContextPath());
-                response.sendRedirect(encode + "/Home?action=dates");
+                response.sendRedirect(encode + "/Home?action=userdates");
 
             }
         }

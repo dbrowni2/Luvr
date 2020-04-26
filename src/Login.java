@@ -1,3 +1,7 @@
+import beans.User;
+import database.UserDB;
+import filters.BCrypt;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -5,15 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.*;
-
-import beans.User;
-import database.UserDB;
-import filters.BCrypt;
-import org.owasp.esapi.ESAPI;
-import org.owasp.esapi.Encoder;
-import org.owasp.esapi.Validator;
+import java.sql.SQLException;
 @WebServlet(name = "Login",
         description ="login controller",
         urlPatterns = {"/login", "/logout"}
@@ -30,7 +26,7 @@ public class Login extends HttpServlet {
         // Set default url and initialize redirect (as opposed to forward) to false
         String url = "/login.jsp";
         boolean redirect = false;
-       String pass= request.getParameter("pass");
+        String pass = request.getParameter("pass");
         // The login function is mapped to "/login"
         if (request.getServletPath().equals("/login")) {
             session = request.getSession(true);
@@ -58,16 +54,16 @@ public class Login extends HttpServlet {
     }
 
 
-        protected void doPost (HttpServletRequest request, HttpServletResponse response) throws
-        ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws
+            ServletException, IOException {
 
-            try {
-                processRequest(request, response);
-            } catch (SQLException e) {
-                System.out.println(e);
-            }
+        try {
+            processRequest(request, response);
+        } catch (SQLException e) {
+            System.out.println(e);
         }
-
     }
+
+}
 
 
