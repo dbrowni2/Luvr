@@ -1,6 +1,4 @@
-import beans.User;
 import database.DatesDB;
-import database.RecommendationsDB;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,14 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
 
 //.import  com.mysql.cj.xdevapi.JsonParser;
 
 
 @WebServlet(name = "Dates",
         description ="dates controller",
-        urlPatterns = {"/dates", "/user_dates"}
+        urlPatterns = {"/dates"}
 )
 public class Dates extends HttpServlet {
 
@@ -45,7 +42,7 @@ public class Dates extends HttpServlet {
             }
         }
 
-        if (request.getServletPath().equals("/userdates") || request.getServletPath().equals("/user_dates")) {
+        /*if (request.getServletPath().equals("/userdates") || request.getServletPath().equals("/user_dates")) {
             url = "/user_dates.jsp";
             session = request.getSession(true);
             User user = (User) session.getAttribute("user");
@@ -66,7 +63,7 @@ public class Dates extends HttpServlet {
                 response.sendRedirect(encode + "/Home?action=userdates");
 
             }
-        }
+        }*/
 
     }
 

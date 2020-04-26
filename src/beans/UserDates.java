@@ -1,11 +1,11 @@
 package beans;
 
 import java.sql.Date;
-import java.time.LocalDate;
 
 public class UserDates {
     private int numRating;
     private int userID;
+    private String userEmail;
     private String dateID;
     private String rating;
     private String name;
@@ -14,13 +14,13 @@ public class UserDates {
     public UserDates() {
     }
 
-    public UserDates(int numRating, int userID, String dateID, String rating, Date dateVisited, String name) {
+    public UserDates(int numRating, String dateID, String rating, Date dateVisited, String name, String userEmail) {
         this.numRating = numRating;
-        this.userID = userID;
         this.dateID = dateID;
         this.rating = rating;
         this.dateVisited = dateVisited;
         this.name = name;
+        this.userEmail = userEmail;
     }
 
 

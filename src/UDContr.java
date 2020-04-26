@@ -1,7 +1,5 @@
-import beans.DateBean;
 import beans.User;
 import beans.UserDates;
-import database.DatesDB;
 import database.RecommendationsDB;
 import database.UserDatesDB;
 
@@ -13,13 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 
-@WebServlet(name = "UDContr", description = "user dates controller", urlPatterns = {"/userdates", "/add_date"})
+@WebServlet(name = "UDContr", description = "user dates controller", urlPatterns = {"/userdates", "/add_date", "/user_dates"})
 
 public class UDContr extends HttpServlet {
 
@@ -60,15 +55,29 @@ public class UDContr extends HttpServlet {
             if (request.getServletPath().equals("/user_dates")) {
                 session = request.getSession(true);
                 User user = (User) session.getAttribute("user");
-                if (user != null) {
+                String zip = request.getParameter("zip");
+                ArrayList<String> tags = RecommendationsDB.getUserTags(user);
+                if (zip != null && tags.size() > 0) {
+                    String rad = "10000";
+                    zip = "28223";
+
+                    System.out.println("getting recDates");
+
+                    session.setAttribute("recDates", RecommendationsDB.getDates(zip, rad, tags));
+                    encode = response.encodeURL(request.getContextPath());
+                    response.sendRedirect(encode + "/Home?action=userdates");
+
+                }
+                /*if (user != null) {
                     //String id = user.getID();
                     ArrayList<String> tags = RecommendationsDB.getUserTags(user);
                     session.setAttribute("tags", tags);
                     encode = response.encodeURL(request.getContextPath());
                     response.sendRedirect(encode + "/Home?action=userdates");
 
-                }
+                }*/
             }
+
         }
 
     }
