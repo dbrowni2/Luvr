@@ -2,6 +2,7 @@ import beans.DateBean;
 import beans.User;
 import beans.UserDates;
 import database.DatesDB;
+import database.RecommendationsDB;
 import database.UserDatesDB;
 
 import javax.servlet.ServletException;
@@ -47,14 +48,26 @@ public class UDContr extends HttpServlet {
 
                 }
             }
-            if(request.getServletPath().equals("/add_date")){
+            if (request.getServletPath().equals("/add_date")) {
                 String id = request.getParameter("date");
-               User user = (User)session.getAttribute("user");
+                User user = (User) session.getAttribute("user");
                 Date datev = Date.valueOf(request.getParameter("datevis"));
-                UserDatesDB.addUserDate(Integer.parseInt(request.getParameter("rate")),user.getID(),id,"",datev,UserDatesDB.getDetails(id));
+                UserDatesDB.addUserDate(Integer.parseInt(request.getParameter("rate")), user.getID(), id, "", datev, UserDatesDB.getDetails(id));
                 encode = response.encodeURL(request.getContextPath());
                 response.sendRedirect(encode + "/Home?action=userdates");
 
+            }
+            if (request.getServletPath().equals("/user_dates")) {
+                session = request.getSession(true);
+                User user = (User) session.getAttribute("user");
+                if (user != null) {
+                    //String id = user.getID();
+                    ArrayList<String> tags = RecommendationsDB.getUserTags(user);
+                    session.setAttribute("tags", tags);
+                    encode = response.encodeURL(request.getContextPath());
+                    response.sendRedirect(encode + "/Home?action=userdates");
+
+                }
             }
         }
 

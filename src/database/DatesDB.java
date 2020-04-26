@@ -38,7 +38,7 @@ public class DatesDB implements Serializable {
             //Extract the JSON array known as "businesses" from the object
             JSONArray stri = root.getJSONArray("businesses");
         //Get the first object from the array of objects
-            DateBean date; //arbitrary date object
+            DateBean date; //arbitrary date object DatesDB
 
             //loop through JSON array and create new date bean objects to put them in dates arraylist
             for(int i = 0; i < stri.length(); i++){

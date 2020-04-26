@@ -1,27 +1,73 @@
 package database;
 
 import beans.DateBean;
+import beans.User;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+import javax.servlet.http.HttpSession;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.lang.reflect.InvocationTargetException;
 import java.net.HttpURLConnection;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class RecommendationsDB implements Serializable {
-    private static ArrayList<DateBean> dates;
+    private static ArrayList<DateBean> recommendations;
+    private static ArrayList<String> tags;
 
     public RecommendationsDB() {
 
     }
 
+    public static ArrayList<String> getUserTags(User user) {
+        //tags = new ArrayList<String>(); // list for dates
+        ResultSet rs = null;
+        int uId = user.getID();
+        try {
+            tags = new ArrayList<String>();
+            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
+            Connection con = DriverManager.getConnection("jdbc:mysql://mysql-luvr.thedanielhead.com/mysql_luvr", "std_db_user", "Lu-vr49er!");
+            PreparedStatement ps = con.prepareStatement("select * from users where ID = ?");
+            ps.setString(1, Integer.toString(user.getID()));
+            rs = ps.executeQuery();
+            String tagsString = "";
+            while (rs.next()) {
+                tagsString += rs.getString("tags");
+            }
+            String[] tagsList = tagsString.split(",");
+            for (int i = 0; i < tagsList.length; i++) {
+                tags.add(tagsList[i]);
+            }
+
+        } catch (SQLException | ClassNotFoundException | NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+
+
+//        // Create two SwapOffers: one from the first user, the other from the second
+//        createSwapOffer(users.get(0), users.get(1), ItemDB.getItemById("a1"), ItemDB.getItemById("a4"));
+//        createSwapOffer(users.get(1), users.get(0), ItemDB.getItemById("a2"), ItemDB.getItemById("a5"));
+//
+//        // Add the two users to a list and return the list of users
+
+        return tags;
+    }
+
     public static ArrayList<DateBean> getDates(String location, String rad, String tag) {
-        ArrayList<DateBean> recommendations;
+
         recommendations = new ArrayList<>(); // list for dates
         try {
             URL uri = new URL("https://api.yelp.com/v3/businesses/search?location=" + location + "&radius=" + rad + "&term=" + tag);

@@ -60,17 +60,17 @@
     <c:if test="${dates != null}">
       <c:set var="datenum" scope="session" value="${dates.size() - 1}"/>
 
-      <c:forEach var="i" begin="0" end="3">
+      <c:forEach var="i" begin="0" end="9">
 
-        <tr>
-          <td><c:out value="${dates.get(i).getName()}"/></td>
-          <td><c:out value="${dates.get(i).getRating()}"/></td>
-          <td style="color: limegreen"><c:out value="${dates.get(i).getPrice()}"/></td>
-          <td><a href="tel:${dates.get(i).getPhone()}">${dates.get(i).getPhone()}</a></td>
-          <td><c:out value="${dates.get(i).getLocation()}"/></td>
-          <td><a href="https://maps.google.com?saddr=Current+Location&daddr=${dates.get(i).location}"
-                 target="_blank"><i class="fas fa-directions"></i></a></td>
-          <td><a href="${dates.get(i).getUrl()}"><i class="fab fa-yelp"></i></a></td>
+          <tr>
+              <td><c:out value="${dates.get(i).getName()}"/></td>
+              <td><c:out value="${dates.get(i).getRating()}"/></td>
+              <td style="color: limegreen"><c:out value="${dates.get(i).getPrice()}"/></td>
+              <td><a href="tel:${dates.get(i).getPhone()}">${dates.get(i).getPhone()}</a></td>
+              <td><c:out value="${dates.get(i).getLocation()}"/></td>
+              <td><a href="https://maps.google.com?saddr=Current+Location&daddr=${dates.get(i).location}"
+                     target="_blank"><i class="fas fa-directions"></i></a></td>
+              <td><a href="${dates.get(i).getUrl()}"><i class="fab fa-yelp"></i></a></td>
         </tr>
 
       </c:forEach>
