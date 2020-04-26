@@ -13,6 +13,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class RecommendationsDB implements Serializable {
     private static ArrayList<DateBean> recommendations;
@@ -38,17 +39,9 @@ public class RecommendationsDB implements Serializable {
                 tagsString += rs.getString("tags");
             }
             String[] tagsList = tagsString.split(",");
-            for (int i = 0; i < tagsList.length; i++) {
-                tags.add(tagsList[i]);
-            }
+            tags.addAll(Arrays.asList(tagsList));
 
-        } catch (SQLException | ClassNotFoundException | NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
+        } catch (SQLException | ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
             e.printStackTrace();
         }
 
