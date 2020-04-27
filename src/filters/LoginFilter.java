@@ -1,12 +1,13 @@
 package filters;
-import database.UserDB;
+
 import beans.User;
+import database.UserDB;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebFilter(filterName = "LoginFilter",
@@ -27,7 +28,7 @@ public class LoginFilter implements Filter {
 
         // find user
         for(User user: UserDB.getUsers()) {
-            if(user.getuEmail().equals(email) && BCrypt.checkpw(request.getParameter("pass"),user.getuPass())){
+            if (user.getuEmail().equals(email) && BCrypt.checkpw(pass, user.getuPass())) {
                 filterUser = user;
             }
         }

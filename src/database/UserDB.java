@@ -20,16 +20,10 @@ public class UserDB implements Serializable {
 
             rs = ps.executeQuery();
 
-            while(rs.next()){
+            while (rs.next()) {
                 users.add(new User(rs.getInt("ID"), rs.getString("userName"), rs.getString("userEmail"), rs.getString("userPass")));
             }
-        } catch (SQLException | ClassNotFoundException | NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
+        } catch (SQLException | ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
             e.printStackTrace();
         }
 

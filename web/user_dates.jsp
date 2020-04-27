@@ -23,16 +23,16 @@
         </thead>
         <tbody>
         <c:choose>
-        <c:when test="${user_dates.size() != 0}">
-        <c:forEach var="i" begin="0" end="${user_dates.size() - 1}">
+        <c:when test="${user_dates != null}">
+            <c:forEach var="i" begin="0" end="${user_dates.size() - 1}">
 
-          <tr>
-            <td><c:out value="${user_dates.get(i).getName()}"/></td>
-            <td><c:out value="${user_dates.get(i).getNumRating()}"/></td>
-            <td><c:out value="${user_dates.get(i).getDateVisited()}"/></td>
-          </tr>
+                <tr>
+                    <td><c:out value="${user_dates.get(i).getName()}"/></td>
+                    <td><c:out value="${user_dates.get(i).getNumRating()}"/></td>
+                    <td><c:out value="${user_dates.get(i).getDateVisited()}"/></td>
+                </tr>
 
-        </c:forEach>
+            </c:forEach>
         </c:when>
         <c:otherwise>
           <h2>No dates found! Go out and find some!</h2>

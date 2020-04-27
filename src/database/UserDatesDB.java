@@ -39,13 +39,7 @@ public class UserDatesDB implements Serializable {
                 userDates.add(new UserDates(rs.getInt("rating_numerical"), rs.getString("userEmail"), rs.getString("dateID"), rs.getString("rating"), rs.getDate("date_time"), rs.getString("name")));
 
             }
-        } catch (SQLException | ClassNotFoundException | NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
+        } catch (SQLException | ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InvocationTargetException | InstantiationException e) {
             e.printStackTrace();
         }
 
@@ -101,7 +95,7 @@ public class UserDatesDB implements Serializable {
                 tags.add(tagRaw.getJSONObject(i).getString("title"));
             }
 
-            ps = con.prepareStatement("SELECT tags FROM users where id = ?");
+            ps = con.prepareStatement("SELECT tags FROM users where userEmail = ?");
             ps.setString(1, userEmail);
             rs = ps.executeQuery();
 
@@ -133,7 +127,7 @@ public class UserDatesDB implements Serializable {
                 allTags.append(s);
                 comma=", ";
             }
-            ps = con.prepareStatement("UPDATE users SET tags = ? where ID = ? ");
+            ps = con.prepareStatement("UPDATE users SET tags = ? where userEmail = ? ");
             ps.setString(1, allTags.toString());
             ps.setString(2, userEmail);
             ps.executeUpdate();

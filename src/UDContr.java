@@ -57,6 +57,7 @@ public class UDContr extends HttpServlet {
                 User user = (User) session.getAttribute("user");
                 String zip = request.getParameter("zip");
                 ArrayList<String> tags = RecommendationsDB.getUserTags(user);
+                session.setAttribute("tags", tags);
                 if (zip != null && tags.size() > 0) {
                     String rad = "10000";
                     zip = "28223";

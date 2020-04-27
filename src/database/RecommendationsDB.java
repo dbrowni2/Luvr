@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class RecommendationsDB implements Serializable {
-    private static ArrayList<DateBean> recommendations;
     private static ArrayList<String> tags;
 
     public RecommendationsDB() {
@@ -57,7 +56,7 @@ public class RecommendationsDB implements Serializable {
 
     public static ArrayList<DateBean> getDates(String location, String rad, ArrayList<String> tags) {
 
-        recommendations = new ArrayList<>(); // list for dates
+        ArrayList<DateBean> recommendations = new ArrayList<>(); // list for dates
         for (int k = 0; k < tags.size(); k++) {
             try {
                 URL uri = new URL("https://api.yelp.com/v3/businesses/search?location=" + location + "&radius=" + rad + "&term=" + tags.get(k));
