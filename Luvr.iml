@@ -21,7 +21,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lib" type="java-resource" />
     </content>
-    <orderEntry type="jdk" jdkName="1.8.0_221" jdkType="JavaSDK" />
+    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="Java EE 6-Java EE 6" level="project" />
     <orderEntry type="module-library" exported="">
