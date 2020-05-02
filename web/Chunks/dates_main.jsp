@@ -5,7 +5,7 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/sql" prefix = "sql"%>
 <!-- TESTING SITE ENDS-->
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <jsp:include page="/Chunks/links.jsp"></jsp:include>
 <script src="${pageContext.request.contextPath}/static/scripts/jquery.tablesorter.min.js"></script>
 <script>
@@ -76,6 +76,7 @@
                         <th scope="col" data-sorter="false">Directions</th>
                         <th scope="col" data-sorter="false">Yelp Page</th>
                         <th scope="col" data-sorter="false">Record</th>
+                        <th scope="col" data-sorter="false">Invite</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -100,6 +101,11 @@
                             <td><a href="<c:url value="/Home?action=add_date">
                             <c:param name="date" value="${dates.get(i).getId()}"/>
                             </c:url>" title="I've been here!"><i class="fas fa-clipboard"></i></a></td>
+
+                                    <td><a href="<c:url value="/Home?action=invite">
+                            <c:param name="date" value="${dates.get(i).getId()}"/>
+                            </c:url>" title="Invite Someone!"><i class="fas fa-clipboard"></i></a></td>
+
                                 </c:when>
                                 <c:otherwise> <td><a href="<c:url value="/Home?action=login">
                             </c:url>" title="Must be logged in" disabled><i class="fas fa-clipboard"></i></a></td></c:otherwise>

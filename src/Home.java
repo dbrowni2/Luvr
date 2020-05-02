@@ -63,6 +63,13 @@ public class Home extends HttpServlet {
             case "forgotpw":
                 request.getRequestDispatcher("forgotpw.jsp").forward(request, response);
                 break;
+            case "invite":
+                 id = request.getParameter("date");
+                 name = UserDatesDB.getDetails(id);
+
+                request.setAttribute("name",name);
+                request.setAttribute("id",id);
+                request.getRequestDispatcher("invite.jsp").forward(request, response);
             default:
                 break;
         }
