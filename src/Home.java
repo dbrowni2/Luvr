@@ -46,12 +46,12 @@ public class Home extends HttpServlet {
                 session.setAttribute("user_dates", dates);
                 session = request.getSession(true);
                 String zip = request.getParameter("zip");
-                zip = "28075";
+                //zip = "28075";
                 ArrayList<String> tags = RecommendationsDB.getUserTags(user);
                 session.setAttribute("tags", tags);
                 if (zip != null && tags.size() > 0) {
                     String rad = "16093";
-                    zip = "28223";
+                    //zip = "28223";
 
                     System.out.println("getting recDates");
 

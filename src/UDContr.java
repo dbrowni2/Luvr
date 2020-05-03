@@ -60,7 +60,7 @@ public class UDContr extends HttpServlet {
                 session.setAttribute("tags", tags);
                 if (zip != null && tags.size() > 0) {
                     String rad = "10000";
-                    zip = "28223";
+                    //zip = "28223";
 
                     System.out.println("getting recDates");
 
