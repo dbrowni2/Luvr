@@ -46,7 +46,7 @@
     <table class="table table-striped table-hover" id="locations">
         <caption><h2>&nbsp;Luvr Recommendations</h2>
             <div class="col-sm-2">
-                <form method="post" action="<%= request.getContextPath()%>/invite">
+                <form method="post" action="<%= request.getContextPath()%>/userdates">
                     <div class="form-group">
                         <div class="input-group">
                             <div class="col-sm-6">
