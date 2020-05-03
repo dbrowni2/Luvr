@@ -31,11 +31,11 @@
 
 <div class="dateFinder" style="padding-left: 30pt; padding-right: 30pt">
     <form Method="post" action="<%= request.getContextPath()%>/dates">
-        <h1>Find dates near you!</h1>
+        <h1><p style="font-family:Georgia">Find dates near you!</p></h1>
         <div class="col-sm-8 col-lg-4">
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="zip">Enter your ZIP code (ex: 28223):</label>
+                    <label for="zip"><p style="font-family:Georgia">Enter your ZIP code (ex: 28223):</p></label>
                     <input type="text" class="form-control" id="zip" name="zip" required
                            pattern="(^\d{5}([ \-]\d{4})?$)">
                 </div>
@@ -48,7 +48,7 @@
 
         <div class="col-sm-1 col-lg-4">
             <div class="col-sm-4">
-                <label>Select the range you'd like to search in: </label>
+                <label><p style="font-family:Georgia">Select the range you'd like to search in:</p></label>
                 <br>
                 <label class="radio-inline"><input type="radio" name="optradio" value="8046"checked>5 miles</label>
                 <label class="radio-inline"><input type="radio" name="optradio" value="16093">10 miles</label>
