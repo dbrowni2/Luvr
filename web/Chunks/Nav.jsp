@@ -31,16 +31,6 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <br style="line-height: 15px"/><span class="main"><i>Finding the <span class="custom">perfect</span> date place for <span class="custom">you</span>.</i></span>
-            <!--
-            <form class="navbar-form navbar-left", method="POST" action="<%= request.getContextPath() %>/dates">
-                <div class="form-group">
-                    <label for="zip"></label>
-                    <input type="text" class="form-control" id="zip" name="zip" placeholder="Enter your ZIP code"
-                           pattern="(^\d{5}([ \-]\d{4})?$)">
-                    <input type="hidden" name="optradio" value="8046">
-                </div>
-                <button type="submit" class="btn btn-default"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><i class="fas fa-search fa-fw"></i> Find Dates</a></button>
-            </form>-->
 
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="<%= request.getContextPath() %>/Home?action=dates">Dates</a></li>
@@ -61,7 +51,6 @@
                        aria-expanded="false"> ${user.uName} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="<%= request.getContextPath() %>/Home?action=userdates"><i class="fas fa-user fa-fw"></i> My Dates</a></li>
-                        <li><a href="#">&nbsp;Itinerary (nope)</a></li>
                         <li><a href="<%= request.getContextPath() %>/Home?action=logout"><i class="fas fa-sign-out-alt fa-fw"></i> Logout</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#"><i class="fas fa-file fa-fw"></i> Privacy Policy</a></li>
