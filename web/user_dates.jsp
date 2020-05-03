@@ -23,7 +23,8 @@
         </thead>
         <tbody>
         <c:choose>
-        <c:when test="${user_dates != null}">
+        <c:when test="${user_dates.size() != 0}">
+
             <c:forEach var="i" begin="0" end="${user_dates.size() - 1}">
 
                 <tr>
@@ -57,7 +58,8 @@
     </thead>
         <tbody>
 
-        <c:if test="${recDates != null}">
+<c:choose>
+    <c:when test="${recDates != null}">
             <c:set var="datenum" scope="session" value="${recDates.size() - 1}"/>
 
             <c:forEach var="i" begin="0" end="9">
@@ -74,7 +76,12 @@
                 </tr>
 
             </c:forEach>
-    </c:if>
+    </c:when>
+    <c:otherwise>
+        <h2>No dates found! Go out and find some!</h2>
+
+    </c:otherwise>
+</c:choose>
     </tbody>
     </table>
     </div>

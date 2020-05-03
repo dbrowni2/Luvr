@@ -77,7 +77,7 @@ public class Dates extends HttpServlet {
             DateTimeFormatter f2 = DateTimeFormatter.ofPattern("E, MMM dd yyyy");
             String whenS = when.format(f2);
             String email = request.getParameter("to");
-           String message = "Hey there, "+ request.getParameter("who") + "! Someone wants to go out with you! Here are the details: \nWho:" + request.getParameter("from") + "\nPlace:" + dName + "\nPhone:" + dPhone + "\nAddress:" + dAddr + "\nWhen:" +whenS +
+           String message = "Hey there, "+ request.getParameter("who") + "! Someone wants to go out with you! Here are the details: \nWho: " + request.getParameter("from") + "\nPlace: " + dName + "\nPhone: " + dPhone + "\nAddress: " + dAddr + "\nWhen: " +whenS +
                    "\nHere is a custom message they wrote you:\n" + request.getParameter("cus") ;
 
             session = request.getSession(true);
