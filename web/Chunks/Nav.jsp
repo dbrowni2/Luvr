@@ -51,7 +51,6 @@
                        aria-expanded="false"> ${user.uName} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="<%= request.getContextPath() %>/Home?action=userdates"><i class="fas fa-user fa-fw"></i> My Dates</a></li>
-                        <li><a href="#">&nbsp;Itinerary (nope)</a></li>
                         <li><a href="<%= request.getContextPath() %>/Home?action=logout"><i class="fas fa-sign-out-alt fa-fw"></i> Logout</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#"><i class="fas fa-file fa-fw"></i> Privacy Policy</a></li>
