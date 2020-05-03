@@ -23,7 +23,8 @@
   <div class="container">
     <div class="jumbotron" id="leader">
       <h1 class="display-4">Luvr</h1>
-      <p class="lead">What the ( ͡° ͜ʖ ͡°) did you just ( ͡° ͜ʖ ͡°) say about me, you little ( ͡° ͜ʖ ͡°)? I’ll have you know I graduated top of my ( ͡° ͜ʖ ͡°) in the ( ͡° ͜ʖ ͡°), and I’ve been involved in numerous secret ( ͡° ͜ʖ ͡°) on ( ͡° ͜ʖ ͡°), and I have over 300 confirmed ( ͡° ͜ʖ ͡°). I am trained in ( ͡° ͜ʖ ͡°) warfare and I’m the top ( ͡° ͜ʖ ͡°) in the entire US armed ( ͡° ͜ʖ ͡°). You are nothing to me but just another ( ͡° ͜ʖ ͡°). I will wipe you the ( ͡° ͜ʖ ͡°) out with precision the ( ͡° ͜ʖ ͡°) of which has never been seen before on this ( ͡° ͜ʖ ͡°), mark my ( ͡° ͜ʖ ͡°) words. ( ͡° ͜ʖ ͡°) think ( ͡° ͜ʖ ͡°) can get away with saying that ( ͡° ͜ʖ ͡°) to me over the ( ͡° ͜ʖ ͡°)? Think again, ( ͡° ͜ʖ ͡°). As we speak I am contacting my secret network of ( ͡° ͜ʖ ͡°) across the ( ͡° ͜ʖ ͡°)</p>
+      <p class="lead"><i>So, you finally found a date</i> ❤ <i>...now what?</i> <p>This is where Luvr comes in. Our mission is to provide anyone, anywhere, no matter their origin, background, beliefs or interests, with the ability to find interesting places to take others for dates. This includes user-sourced information for what places offer what services, how well suited the location is for dates. Using Luvr, users can get date recommendations based on their location, the weather conditions, and past “liked” dates. If you’re looking for a short, low price date - you can choose that kind of date! If you’re looking to pop the question and want an extravagant date, you can also choose that! We give you the ability to quickly find date recommendations based on your preferences, and you can even share your favorite dates or find others’ favorite dates.
+    </p></p>
     </div>
   </div>
 </main>
