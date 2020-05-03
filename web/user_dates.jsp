@@ -11,13 +11,16 @@
 <div class="table table-responsive">
 
 
+
     <table class="table table-striped table-hover">
+        <body style='font-family:"Georgia"'>
+
         <caption><h2>&nbsp;My Dates</h2></caption>
         <thead class="">
         <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Rating</th>
-            <th scope="col">Date Visited</th>
+            <th scope="col"><i>Name</i></th>
+            <th scope="col"><i>Rating</i></th>
+            <th scope="col"><i>Date Visited</i></th>
 
         </tr>
         </thead>
