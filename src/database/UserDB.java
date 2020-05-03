@@ -106,5 +106,18 @@ public class UserDB implements Serializable {
         }
         return null;
     }
+    public static void updateUPass(String pass, int ID){
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
+            Connection con = DriverManager.getConnection("jdbc:mysql://mysql-luvr.thedanielhead.com/mysql_luvr", "std_db_user", "Lu-vr49er!");
+            PreparedStatement ps = con.prepareStatement("UPDATE users SET userPass = ? WHERE ID = ?;");
+            ps.setString(1,pass);
+            ps.setInt(2,ID);
+            ps.executeUpdate();
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        }
 
 }
