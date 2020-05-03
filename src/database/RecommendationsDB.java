@@ -57,9 +57,9 @@ public class RecommendationsDB implements Serializable {
     public static ArrayList<DateBean> getDates(String location, String rad, ArrayList<String> tags) {
 
         ArrayList<DateBean> recommendations = new ArrayList<>(); // list for dates
-        for (int k = 0; k < tags.size(); k++) {
+        for (String tag : tags) {
             try {
-                URL uri = new URL("https://api.yelp.com/v3/businesses/search?location=" + location + "&radius=" + rad + "&term=" + tags.get(k));
+                URL uri = new URL("https://api.yelp.com/v3/businesses/search?location=" + location + "&radius=" + rad + "&term=" + tag);
                 HttpURLConnection conn = (HttpURLConnection) uri.openConnection();
                 conn.setDoInput(true);
 
