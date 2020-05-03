@@ -1,5 +1,6 @@
 import beans.User;
 import beans.UserDates;
+import database.RecommendationsDB;
 import database.UserDatesDB;
 
 import javax.servlet.ServletException;
@@ -43,9 +44,23 @@ public class Home extends HttpServlet {
                 // actual date getting handled in DatesDB
                 ArrayList<UserDates> dates = UserDatesDB.getUserDates(uEmail);
                 session.setAttribute("user_dates", dates);
+                session = request.getSession(true);
+                String zip = request.getParameter("zip");
+                zip = "28075";
+                ArrayList<String> tags = RecommendationsDB.getUserTags(user);
+                session.setAttribute("tags", tags);
+                if (zip != null && tags.size() > 0) {
+                    String rad = "16093";
+                    zip = "28223";
+
+                    System.out.println("getting recDates");
+
+                    session.setAttribute("recDates", RecommendationsDB.getDates(zip, rad, tags));
+                }
                     request.getRequestDispatcher("user_dates.jsp").forward(request, response);
-                    break;
-            case "add_date":
+
+                break;
+                    case "add_date":
                 String id = request.getParameter("date");
                 String name = UserDatesDB.getDetails(id);
 

@@ -62,7 +62,7 @@
     <c:when test="${recDates != null}">
             <c:set var="datenum" scope="session" value="${recDates.size() - 1}"/>
 
-            <c:forEach var="i" begin="0" end="9">
+            <c:forEach var="i" begin="0" end="${datenum}">
 
                 <tr>
                     <td><c:out value="${recDates.get(i).getName()}"/></td>
@@ -77,10 +77,7 @@
 
             </c:forEach>
     </c:when>
-    <c:otherwise>
-        <h2>No dates found! Go out and find some!</h2>
 
-    </c:otherwise>
 </c:choose>
     </tbody>
     </table>
