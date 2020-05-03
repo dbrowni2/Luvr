@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 @WebServlet(name = "Login",
         description ="login controller",
-        urlPatterns = {"/login", "/logout"}
+        urlPatterns = {"/login", "/logout", "/deleteAcc"}
 )
 public class Login extends HttpServlet {
 
@@ -42,6 +42,13 @@ public class Login extends HttpServlet {
                     }
                 }
             }
+        }
+        if(request.getServletPath().equals("/deleteAcc")){
+            int ID = Integer.parseInt(request.getParameter("ID"));
+            UserDB.delUser(ID);
+            session.invalidate();
+            encode = response.encodeURL(request.getContextPath());
+            response.sendRedirect(encode + "/Home?action=home");
         }
     }
 

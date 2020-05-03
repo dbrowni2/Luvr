@@ -119,5 +119,17 @@ public class UserDB implements Serializable {
             e.printStackTrace();
         }
         }
+        public static void delUser(int ID){
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
+                Connection con = DriverManager.getConnection("jdbc:mysql://mysql-luvr.thedanielhead.com/mysql_luvr", "std_db_user", "Lu-vr49er!");
+                PreparedStatement ps = con.prepareStatement("DELETE from users where ID=?");
+                ps.setInt(1,ID);
+                ps.executeUpdate();
+
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
 
 }
