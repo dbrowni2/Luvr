@@ -18,16 +18,18 @@ public class LoginFilter implements Filter {
     }
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
-        HttpServletResponse response = (HttpServletResponse)resp;
-        HttpServletRequest request = (HttpServletRequest)req;
+        HttpServletResponse response = (HttpServletResponse) resp;
+        HttpServletRequest request = (HttpServletRequest) req;
         String email = request.getParameter("email");
         String pass = request.getParameter("pass");
+        String uID = request.getParameter("uID");
+
         String error;
         User filterUser = null;
         HttpSession session = request.getSession(true);
 
         // find user
-        for(User user: UserDB.getUsers()) {
+        for (User user : UserDB.getUsers()) {
             if (user.getuEmail().equals(email) && BCrypt.checkpw(pass, user.getuPass())) {
                 filterUser = user;
             }
