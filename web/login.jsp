@@ -28,9 +28,17 @@
 
             <label for="Lpass">Password:</label><br>
             <input type="password" name="pass" id="Lpass" class="form-control"><br>
-            <input type="submit" value="login" class="btn btn-default"><br>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <input type="submit" value="login" class="btn btn-primary ">
+                <a role="button" class="btn btn-outline-secondary"
+                   href="<%=request.getContextPath()%>/Home?action=forgotpw">Forgot
+                    Password</a>
+            </div>
+
+
         </div>
     </form>
+
 
 </div>
 </body>

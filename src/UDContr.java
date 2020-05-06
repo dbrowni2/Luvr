@@ -25,13 +25,27 @@ public class UDContr extends HttpServlet {
         String encode = null;
         String url = "/home";
         if(session.getAttribute("user") != null) {
-            if (request.getServletPath().equals("/userdates")) {
+            if (request.getServletPath().equals("/userdates") || request.getServletPath().equals("/user_dates")) {
                 url = "/user_dates.jsp";
                 session = request.getSession(true);
 
-                User user = (User)session.getAttribute("user");
+                User user = (User) session.getAttribute("user");
+                session.setAttribute("zip", request.getParameter("zip"));
 
+                String zip = request.getParameter("zip");
+                if (zip != null) {
+                    session.setAttribute("zip", zip);
+                    ArrayList<String> tags = RecommendationsDB.getUserTags(user);
+                    session.setAttribute("tags", tags);
+                    if (zip != null && tags.size() > 0) {
+                        String rad = "16093";
+                        //zip = "28223";
 
+                        System.out.println("getting recDates");
+
+                        session.setAttribute("recDates", RecommendationsDB.getDates(zip, rad, tags));
+                    }
+                }
                 if (user != null) {
 
                     String uEmail = user.getuEmail();
@@ -56,11 +70,17 @@ public class UDContr extends HttpServlet {
                 session = request.getSession(true);
                 User user = (User) session.getAttribute("user");
                 String zip = request.getParameter("zip");
+
                 ArrayList<String> tags = RecommendationsDB.getUserTags(user);
                 session.setAttribute("tags", tags);
+                if (zip == null) {
+                    System.out.println("Zip Null");
+                    zip = "28147";
+                }
                 if (zip != null && tags.size() > 0) {
                     String rad = "10000";
                     //zip = "28223";
+                    System.out.println(zip);
 
                     System.out.println("getting recDates");
 

@@ -25,7 +25,7 @@ public class Home extends HttpServlet {
         String action = request.getParameter("action");
         HttpSession session = request.getSession(true);
         // forward to controller url instead of jsp via action
-        switch(action) {
+        switch (action) {
             case "login":
                 request.getRequestDispatcher("login.jsp").forward(request, response);
                 break;
@@ -46,7 +46,8 @@ public class Home extends HttpServlet {
                 session.setAttribute("user_dates", dates);
                 session = request.getSession(true);
                 String zip = request.getParameter("zip");
-                //zip = "28075";
+                //String zip = session.getAttribute("zip").toString();
+                //zip = "28223";
                 ArrayList<String> tags = RecommendationsDB.getUserTags(user);
                 session.setAttribute("tags", tags);
                 if (zip != null && tags.size() > 0) {
@@ -57,22 +58,22 @@ public class Home extends HttpServlet {
 
                     session.setAttribute("recDates", RecommendationsDB.getDates(zip, rad, tags));
                 }
-                    request.getRequestDispatcher("user_dates.jsp").forward(request, response);
+                request.getRequestDispatcher("user_dates.jsp").forward(request, response);
 
                 break;
-                    case "add_date":
+            case "add_date":
                 String id = request.getParameter("date");
                 String name = UserDatesDB.getDetails(id);
 
-                request.setAttribute("name",name);
-                request.setAttribute("id",id);
+                request.setAttribute("name", name);
+                request.setAttribute("id", id);
 
                 request.getRequestDispatcher("date_add.jsp").forward(request, response);
 
                 break;
             case "logout":
                 session.invalidate();
-               String encode = response.encodeURL(request.getContextPath());
+                String encode = response.encodeURL(request.getContextPath());
                 response.sendRedirect(encode + "/Home?action=home");
                 break;
             case "forgotpw":

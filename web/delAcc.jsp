@@ -24,8 +24,8 @@
     <div class="container">
         <div class="jumbotron" id="leader">
             <h1 class="display-4">Luvr</h1>
-        <h2>Are you sure you want to delete your account?</h2>
-         <a href="<c:url value="/deleteAcc">
+            <h2>Are you sure you want to delete your account?</h2>
+            <a href="<c:url value="/deleteAcc">
              <c:param name="ID" value="${user.ID}"/>
          </c:url>">Yes, Delete my Account</a>
             <a href="/Home?action=home">No, Keep my Account</a>
