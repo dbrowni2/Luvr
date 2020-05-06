@@ -21,14 +21,26 @@
     <jsp:include page="/Chunks/Nav.jsp"></jsp:include>
 </header>
 <main>
+
     <div class="container">
-        <div class="jumbotron" id="leader">
-            <h1 class="display-4">Luvr</h1>
-            <h2>Are you sure you want to delete your account?</h2>
-            <a href="<c:url value="/deleteAcc">
-             <c:param name="ID" value="${user.ID}"/>
-         </c:url>">Yes, Delete my Account</a>
-            <a href="/Home?action=home">No, Keep my Account</a>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Delete Luvr Account</h2>
+            </div>
+            <div class="panel-body">
+                <div class="col-sm-12">
+                    <h2>Are you sure you want to delete your account?</h2>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <a role="button" class="btn btn-danger"
+                           href="<c:url value="/deleteAcc">
+                            <c:param name="ID" value="${user.ID}"/>
+                            </c:url>">Delete Account</a>
+                        <a role="button" class="btn btn-default"
+                           href="<%=request.getContextPath()%>/Home?action=home">Keep Account</a>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
 </main>
