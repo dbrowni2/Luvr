@@ -30,7 +30,7 @@
             <div class="panel-body">
                 <div class="col-sm-12">
                     <h2>Are you sure you want to delete your account?</h2>
-                    <div class="btn-group" role="group" aria-label="Basic example">
+                    <div class="btn-group" role="group">
                         <a role="button" class="btn btn-danger"
                            href="<c:url value="/deleteAcc">
                             <c:param name="ID" value="${user.ID}"/>

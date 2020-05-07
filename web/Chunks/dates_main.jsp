@@ -37,7 +37,7 @@
                         <label for="zip"><p style="font-family:Georgia">Enter your ZIP code (ex: 28223):</p></label>
                         <input type="text" class="form-control" id="zip" name="zip" required
                                pattern="(^\d{5}([ \-]\d{4})?$)">
-                        <input type="submit" value="Find Dates" class="btn btn-primary">
+                        <input type="submit" value="Find Dates" class="btn btn-success">
                     </div>
                 </div>
                 <div class="row">

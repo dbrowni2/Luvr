@@ -54,7 +54,7 @@
 
                             <label for="zip">Zip code:</label>
                             <input type="text" id="zip" name="zip" required class="form-control">
-                            <input type="submit" value="Gets!" class="btn btn-primary" align="center">
+                            <input type="submit" value="Get Recommendations!" class="btn btn-success" align="center">
 
                         </div>
                     </form>
